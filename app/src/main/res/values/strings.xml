@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">LGank</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_read">Read</string>
+    <string name="title_me">Me</string>
 </resources>
