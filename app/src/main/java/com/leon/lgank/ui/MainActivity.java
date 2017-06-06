@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.leon.lgank.R;
@@ -51,24 +52,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private List<Fragment> mList;
     private DrawerLayout mDrawer;
     private NavigationView mNavigationView;
+    private BottomNavigationView navigation;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        final BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        mVpMain = (ViewPager) findViewById(R.id.vp_main);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        initToolbar();
+        initView();
         initFragment();
         MainAdapter adapter = new MainAdapter(getSupportFragmentManager(), getApplicationContext(), mList);
         mVpMain.setAdapter(adapter);
-        //ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-        //        this, mDrawer, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        //mDrawer.setDrawerListener(toggle);
-        //toggle.syncState();
-        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
-        mNavigationView.setNavigationItemSelectedListener(this);
         mVpMain.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -100,10 +96,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     /**
+     * 初始化Toolbar信息
+     */
+    private void initToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+    }
+
+    /**
+     * 初始化控件
+     */
+    private void initView() {
+        navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        mVpMain = (ViewPager) findViewById(R.id.vp_main);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
+        mNavigationView.setNavigationItemSelectedListener(this);
+    }
+
+    /**
      * 初始化Fragment对象
      */
     private void initFragment() {
-        mList = new ArrayList<Fragment>();
+        mList = new ArrayList<>();
         mList.add(new HomeFragment());
         mList.add(new ReadFragment());
         mList.add(new MeFragment());
