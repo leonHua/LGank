@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -51,9 +52,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ViewPager mVpMain;//主界面ViewPager
     private List<Fragment> mList;
     private DrawerLayout mDrawer;
-    private NavigationView mNavigationView;
-    private BottomNavigationView navigation;
-
+    private NavigationView mNavigationView;//侧滑菜单
+    private BottomNavigationView mBottomNavigation;//底部导航
 
 
     @Override
@@ -75,13 +75,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onPageSelected(int position) {
                 switch (position) {
                     case NAVIGATION_HOME:
-                        navigation.setSelectedItemId(R.id.navigation_home);
+                        mBottomNavigation.setSelectedItemId(R.id.navigation_home);
                         break;
                     case NAVIGATION_READ:
-                        navigation.setSelectedItemId(R.id.navigation_read);
+                        mBottomNavigation.setSelectedItemId(R.id.navigation_read);
                         break;
                     case NAVIGATION_ME:
-                        navigation.setSelectedItemId(R.id.navigation_me);
+                        mBottomNavigation.setSelectedItemId(R.id.navigation_me);
                         break;
                 }
 
@@ -107,11 +107,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      * 初始化控件
      */
     private void initView() {
-        navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        mBottomNavigation = (BottomNavigationView) findViewById(R.id.navigation);
         mVpMain = (ViewPager) findViewById(R.id.vp_main);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        mBottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
+        mDrawer = (DrawerLayout) findViewById(R.id.drawlayout);
         mNavigationView.setNavigationItemSelectedListener(this);
+
     }
 
     /**
@@ -126,6 +128,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return false;
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.navigation_home:
+                break;
+            case R.id.navigation_read:
+                break;
+            case R.id.navigation_me:
+                break;
+        }
+        item.setCheckable(true);
+        mDrawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawlayout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 }

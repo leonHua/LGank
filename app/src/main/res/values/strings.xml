@@ -3,10 +3,9 @@
     <string name="title_home">Home</string>
     <string name="title_read">Read</string>
     <string name="title_me">Me</string>
-    <string name="title_activity_main2">Main2Activity</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-
-    <string name="action_settings">Settings</string>
+    <string name="menu_draw_client">前端</string>
+    <string name="menu_draw_app">APP</string>
+    <string name="menu_draw_recommend">瞎推荐</string>
+    <string name="menu_draw_video">休息视频</string>
 </resources>

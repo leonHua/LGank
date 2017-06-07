@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/menu_draw_client"
         android:icon="@mipmap/bottom_home"
-        android:title="@string/title_home"/>
+        android:title="@string/menu_draw_client"/>
 
     <item
-        android:id="@+id/navigation_read"
+        android:id="@+id/menu_draw_recommend"
         android:icon="@mipmap/bottom_read"
-        android:title="@string/title_read"/>
+        android:title="@string/menu_draw_recommend"/>
 
     <item
-        android:id="@+id/navigation_me"
+        android:id="@+id/menu_draw_app"
         android:icon="@mipmap/bottom_me"
-        android:title="@string/title_me"/>
-
+        android:title="@string/menu_draw_app"/>
+    <item
+        android:id="@+id/menu_draw_video"
+        android:icon="@mipmap/bottom_me"
+        android:title="@string/menu_draw_video"/>
 </menu>
