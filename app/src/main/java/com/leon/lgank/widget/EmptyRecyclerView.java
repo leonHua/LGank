@@ -12,23 +12,28 @@ import android.view.View;
  */
 public class EmptyRecyclerView extends RecyclerView {
     private View mEmptyView;
+    private Context mContext;
 
     public EmptyRecyclerView(Context context) {
         super(context);
+        this.mContext = context;
     }
 
     public EmptyRecyclerView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        this.mContext = context;
     }
 
     public EmptyRecyclerView(Context context, @Nullable AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        this.mContext = context;
     }
 
     /**
      * 根据数据源判断是否显示空白view
      */
     private void checkIfEmpty() {
+
         if (mEmptyView != null || getAdapter() != null) {
             mEmptyView.setVisibility(getAdapter().getItemCount() > 0 ? GONE : VISIBLE);
         }

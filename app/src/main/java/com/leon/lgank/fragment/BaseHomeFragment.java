@@ -44,13 +44,10 @@ public class BaseHomeFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mRecyclerView = (EmptyRecyclerView) view.findViewById(R.id.fragment_recyclerview);
-        View emptyView = View.inflate(mContext, R.layout.emptyview, null);
+        View emptyView = view.findViewById(R.id.empty_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
         List<String> list = new ArrayList<>();
-        int sum = 20;
-        for (int i = 0; i < sum; i++) {
-            list.add("test" + i);
-        }
+
         mHomeRecyclerviewAdapter = new HomeRecyclerviewAdapter(mContext, list);
         mRecyclerView.setAdapter(mHomeRecyclerviewAdapter);
         mRecyclerView.setmEmptyView(emptyView);
