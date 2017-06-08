@@ -1,5 +1,7 @@
 package com.leon.lgank.fragment;
 
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 /**
@@ -10,4 +12,13 @@ public class HomeGirlFragment extends BaseHomeFragment {
     public View mView;
 
 
+    @Override
+    public String getApiCategory() {
+        return "Android";
+    }
+
+    @Override
+    public RecyclerView.LayoutManager initLayoutManager() {
+        return new GridLayoutManager(mContext, 2, GridLayoutManager.VERTICAL, false);
+    }
 }

@@ -41,7 +41,13 @@ public class EmptyRecyclerView extends RecyclerView {
 
     public void setmEmptyView(View mEmptyView) {
         this.mEmptyView = mEmptyView;
-        checkIfEmpty();
+//        checkIfEmpty();
+    }
+
+    public void hideEmptyView() {
+        if (mEmptyView.getVisibility() == VISIBLE) {
+            mEmptyView.setVisibility(GONE);
+        }
     }
 
     @Override

@@ -40,8 +40,8 @@ import io.reactivex.schedulers.Schedulers;
  * 时间：2017/6/7
  * 描述: HomeFragment中的Android . ios . 福利 fragment 对应的基类封装
  */
-public class BaseHomeFragment extends Fragment {
-    private Context mContext;
+public abstract class BaseHomeFragment extends Fragment {
+    public Context mContext;
     public View mRootView;
     private EmptyRecyclerView mRecyclerView;
     private HomeRecyclerviewAdapter mHomeRecyclerviewAdapter;
@@ -53,7 +53,6 @@ public class BaseHomeFragment extends Fragment {
     private AVLoadingIndicatorView mAvi;
     private AVLoadingIndicatorView mAviLoadMore;
     private int mPage = 1;
-    private boolean isFirst = true;
     private LinearLayout mLayoutLoadMore;
 
     @Override
@@ -73,12 +72,25 @@ public class BaseHomeFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView(view);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
+        RecyclerView.LayoutManager layoutManager = initLayoutManager();
+        mRecyclerView.setLayoutManager(layoutManager);
+        mHomeRecyclerviewAdapter = new HomeRecyclerviewAdapter(mContext, mList);
+        mRecyclerView.setAdapter(mHomeRecyclerviewAdapter);
+        mRecyclerView.setmEmptyView(mEmptyView);
+        mRecyclerView.hideEmptyView();
 
         if (NetworkUtils.isAvailableByPing()) {
             startLoading();
             getDataFromServer(Constant.GET_DATA_TYPE_NOMAL);
         }
+    }
+
+    /**
+     * 初始化列表的LayoutManager，默认提供LinearLayoutManager，垂直分布
+     * 如果希望列表或者自由规格则由子类实现
+     */
+    public RecyclerView.LayoutManager initLayoutManager() {
+        return new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
     }
 
     @Override
@@ -133,7 +145,7 @@ public class BaseHomeFragment extends Fragment {
      */
     private void getDataFromServer(final int type) {
         Api api = HttpManager.getInstance().getApiService();
-        api.getCategoryData(Constant.CATEGORY_ANDROID, Constant.PAGE_SIZE, mPage)
+        api.getCategoryData(getApiCategory(), Constant.PAGE_SIZE, mPage)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<GankModel>() {
@@ -150,26 +162,19 @@ public class BaseHomeFragment extends Fragment {
                             return;
                         }
                         //更新界面数据
-                        Logger.d(value.getResults().size());
-                        if (isFirst) {
+                        if (Constant.GET_DATA_TYPE_NOMAL == type) {
+                            //正常模式下，清空之前数据，重新加载
+                            Logger.d("eee" + value.getResults().size());
+                            mList.clear();
                             mList = value.getResults();
-                            mHomeRecyclerviewAdapter = new HomeRecyclerviewAdapter(mContext, mList);
-                            mRecyclerView.setAdapter(mHomeRecyclerviewAdapter);
-                            mRecyclerView.setmEmptyView(mEmptyView);
                         } else {
-                            if (Constant.GET_DATA_TYPE_NOMAL == type) {
-                                //正常模式下，清空之前数据，重新加载
-                                mList.clear();
-                                mList = value.getResults();
-                                mHomeRecyclerviewAdapter.setmListData(mList);
-                                mHomeRecyclerviewAdapter.notifyDataSetChanged();
-                            } else {
-                                //加载更多模式
-                                mList.addAll(value.getResults());
-                                mHomeRecyclerviewAdapter.setmListData(mList);
-                                mHomeRecyclerviewAdapter.notifyDataSetChanged();
-                            }
+                            //加载更多模式
+                            Logger.d("ddd" + value.getResults().size());
+                            mList.addAll(value.getResults());
                         }
+
+                        mHomeRecyclerviewAdapter.setmListData(mList);
+                        mHomeRecyclerviewAdapter.notifyDataSetChanged();
                     }
 
                     @Override
@@ -189,6 +194,13 @@ public class BaseHomeFragment extends Fragment {
     }
 
     /**
+     * 获取接口访问分类地址
+     *
+     * @return String
+     */
+    public abstract String getApiCategory();
+
+    /**
      * 停止下拉刷新
      */
     public void stopRefreshing() {
@@ -202,7 +214,6 @@ public class BaseHomeFragment extends Fragment {
      */
     public void startLoading() {
         mAvi.smoothToShow();
-
     }
 
     /**
@@ -217,7 +228,9 @@ public class BaseHomeFragment extends Fragment {
      * 关闭加载中动画
      */
     public void stopLoading() {
-        mAvi.smoothToHide();
+        if (mAvi.isShown()) {
+            mAvi.smoothToHide();
+        }
     }
 
     /**
@@ -237,10 +250,14 @@ public class BaseHomeFragment extends Fragment {
         }
     }
 
+    /**
+     * RecyclerView 滑动监听器
+     */
     class RecyclerViewScrollListener extends RecyclerView.OnScrollListener {
         @Override
         public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
             if (mList.size() < 1) {
+                ToastUtils.showShort("空数据" + mList.size());
                 return;
             }
             //当前RecyclerView显示出来的最后一个的item的position,默认为-1

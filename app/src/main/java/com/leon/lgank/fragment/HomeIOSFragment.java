@@ -9,4 +9,8 @@ import android.view.View;
 public class HomeIOSFragment extends BaseHomeFragment {
     public View mView;
 
+    @Override
+    public String getApiCategory() {
+        return "iOS";
+    }
 }
