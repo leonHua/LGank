@@ -22,10 +22,11 @@ import java.util.List;
  */
 public class HomeFragment extends Fragment {
     private Context mContext;
-    public View mView;
-    public ViewPager mViewPager;
-    public List<Fragment> mListFragments;
-    public String[] mTitles = new String[]{"Android", "IOS", "福利"};
+    private View mView;
+    private ViewPager mViewPager;
+    private List<Fragment> mListFragments;
+    private String[] mTitles = new String[]{"Android", "IOS", "福利"};
+    private TabLayout mTabLayout;
 
     @Override
     public void onAttach(Context context) {
@@ -36,22 +37,29 @@ public class HomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mView = inflater.inflate(R.layout.fragment_home, container, false);
+        if (mView == null) {
+            mView = inflater.inflate(R.layout.fragment_home, container, false);
+        }
         return mView;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
+        mTabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
         mViewPager = (ViewPager) view.findViewById(R.id.home_viewpager);
-        tabLayout.addTab(tabLayout.newTab().setText("Android"));
-        tabLayout.addTab(tabLayout.newTab().setText("IOS"));
-        tabLayout.addTab(tabLayout.newTab().setText("福利"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("Android"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("IOS"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("福利"));
         initFragments();
-        HomeAdapter homeAdapter = new HomeAdapter(getFragmentManager(), mContext, mListFragments, mTitles);
+        HomeAdapter homeAdapter = new HomeAdapter(getChildFragmentManager(), mContext, mListFragments, mTitles);
         mViewPager.setAdapter(homeAdapter);
-        tabLayout.setupWithViewPager(mViewPager);
+        mTabLayout.setupWithViewPager(mViewPager);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
     private void initFragments() {

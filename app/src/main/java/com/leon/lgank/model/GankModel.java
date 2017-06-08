@@ -4,10 +4,10 @@ import java.util.List;
 
 /**
  * 作者：Leon
- * 时间：2017/6/7
+ * 时间：2017/6/8
  * 描述:
  */
-public class ResultModel {
+public class GankModel {
 
     /**
      * error : false

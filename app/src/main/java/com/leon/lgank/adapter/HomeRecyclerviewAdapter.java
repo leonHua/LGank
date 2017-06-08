@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.leon.lgank.R;
+import com.leon.lgank.model.GankModel;
 
 import java.util.List;
 
@@ -18,9 +19,9 @@ import java.util.List;
  */
 public class HomeRecyclerviewAdapter extends RecyclerView.Adapter<HomeRecyclerviewAdapter.ViewHolder> {
     private Context mContext;
-    private List<String> mListData;
+    private List<GankModel.ResultsEntity> mListData;
 
-    public HomeRecyclerviewAdapter(Context mContext, List<String> mListData) {
+    public HomeRecyclerviewAdapter(Context mContext, List<GankModel.ResultsEntity> mListData) {
         this.mContext = mContext;
         this.mListData = mListData;
     }
@@ -34,12 +35,16 @@ public class HomeRecyclerviewAdapter extends RecyclerView.Adapter<HomeRecyclervi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.textView.setText(mListData.get(position));
+        holder.textView.setText(mListData.get(position).getDesc());
     }
 
     @Override
     public int getItemCount() {
         return mListData.size();
+    }
+
+    public void setmListData(List<GankModel.ResultsEntity> mListData) {
+        this.mListData = mListData;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

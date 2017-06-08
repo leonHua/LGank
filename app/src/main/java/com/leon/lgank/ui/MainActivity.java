@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         initFragment();
         MainAdapter adapter = new MainAdapter(getSupportFragmentManager(), getApplicationContext(), mList);
         mVpMain.setAdapter(adapter);
+        //mVpMain.setOffscreenPageLimit(1);
         mVpMain.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
