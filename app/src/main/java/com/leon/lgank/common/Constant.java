@@ -22,4 +22,8 @@ public class Constant {
     //更新数据类型 0:正常加载、下拉刷新   1: 加载更多
     public static final int GET_DATA_TYPE_NOMAL = 0;
     public static final int GET_DATA_TYPE_LOADMORE = 1;
+
+    //列表条目布局类型 0：文字布局（Android ,iOS Fragement）  1：图片布局（福利 Fragement）
+    public static final int ITEM_TYPE_TEXT = 0;
+    public static final int ITEM_TYPE_IMAGE = 1;
 }

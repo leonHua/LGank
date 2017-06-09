@@ -74,7 +74,7 @@ public abstract class BaseHomeFragment extends Fragment {
         initView(view);
         RecyclerView.LayoutManager layoutManager = initLayoutManager();
         mRecyclerView.setLayoutManager(layoutManager);
-        mHomeRecyclerviewAdapter = new HomeRecyclerviewAdapter(mContext, mList);
+        mHomeRecyclerviewAdapter = new HomeRecyclerviewAdapter(mContext, mList, getItemType());
         mRecyclerView.setAdapter(mHomeRecyclerviewAdapter);
         mRecyclerView.setmEmptyView(mEmptyView);
         mRecyclerView.hideEmptyView();
@@ -198,7 +198,14 @@ public abstract class BaseHomeFragment extends Fragment {
      *
      * @return String
      */
-    public abstract String getApiCategory();
+    protected abstract String getApiCategory();
+
+    /**
+     * 不同布局的分类加载，由子类自己实现
+     *
+     * @return
+     */
+    protected abstract int getItemType();
 
     /**
      * 停止下拉刷新
@@ -258,6 +265,10 @@ public abstract class BaseHomeFragment extends Fragment {
         public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
             if (mList.size() < 1) {
                 ToastUtils.showShort("空数据" + mList.size());
+                return;
+            }
+            //如果正在下拉刷新则放弃监听状态
+            if (mRefreshLayout.isRefreshing()) {
                 return;
             }
             //当前RecyclerView显示出来的最后一个的item的position,默认为-1
