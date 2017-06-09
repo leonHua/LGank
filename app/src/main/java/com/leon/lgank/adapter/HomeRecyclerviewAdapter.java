@@ -8,12 +8,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.TimeUtils;
 import com.leon.lgank.R;
 import com.leon.lgank.common.Constant;
 import com.leon.lgank.image.ImageManager;
 import com.leon.lgank.model.GankModel;
-import com.orhanobut.logger.Logger;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -47,11 +49,24 @@ public class HomeRecyclerviewAdapter extends RecyclerView.Adapter<HomeRecyclervi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        GankModel.ResultsEntity resultsEntity = mListData.get(position);
         if (mItemType == Constant.ITEM_TYPE_TEXT) {
-            holder.textView.setText(mListData.get(position).getDesc());
+            holder.tvTitle.setText(resultsEntity.getDesc());
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss'Z'");
+            try {
+                holder.tvTime.setText(TimeUtils.getFriendlyTimeSpanByNow(simpleDateFormat.parse(resultsEntity.getPublishedAt())));
+            } catch (ParseException e) {
+                e.printStackTrace();
+                holder.tvTime.setText("");
+            }
+            holder.tvAuthor.setText(resultsEntity.getWho());
+            if (resultsEntity.getImages() != null && resultsEntity.getImages().size() > 0) {
+                ImageManager.getInstance().loadImage(mContext, resultsEntity.getImages().get(0), holder.ivCover);
+            }else{
+                ImageManager.getInstance().loadImage(mContext, R.drawable.placeholder, holder.ivCover);
+            }
         } else {
-            Logger.i("URL---" + mListData.get(position).getUrl());
-            ImageManager.getInstance().loadImage(mContext, mListData.get(position).getUrl(), holder.ivGirl);
+            ImageManager.getInstance().loadImage(mContext, resultsEntity.getUrl(), holder.ivGirl);
         }
 
     }
@@ -66,12 +81,18 @@ public class HomeRecyclerviewAdapter extends RecyclerView.Adapter<HomeRecyclervi
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView textView;
+        TextView tvTitle;
+        TextView tvAuthor;
+        TextView tvTime;
+        ImageView ivCover;//封面缩率图
         ImageView ivGirl;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            textView = (TextView) itemView.findViewById(R.id.tv_info);
+            tvTitle = (TextView) itemView.findViewById(R.id.tv_title);
+            tvAuthor = (TextView) itemView.findViewById(R.id.tv_author);
+            tvTime = (TextView) itemView.findViewById(R.id.tv_time);
+            ivCover = (ImageView) itemView.findViewById(R.id.iv_cover);
             ivGirl = (ImageView) itemView.findViewById(R.id.iv_girl);
         }
     }
