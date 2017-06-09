@@ -55,6 +55,9 @@ public abstract class BaseHomeFragment extends Fragment {
     private int mPage = 1;
     private LinearLayout mLayoutLoadMore;
 
+
+
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -78,6 +81,7 @@ public abstract class BaseHomeFragment extends Fragment {
         mRecyclerView.setAdapter(mHomeRecyclerviewAdapter);
         mRecyclerView.setmEmptyView(mEmptyView);
         mRecyclerView.hideEmptyView();
+        initListener(mHomeRecyclerviewAdapter);
 
         if (NetworkUtils.isAvailableByPing()) {
             startLoading();
@@ -89,10 +93,17 @@ public abstract class BaseHomeFragment extends Fragment {
      * 初始化列表的LayoutManager，默认提供LinearLayoutManager，垂直分布
      * 如果希望列表或者自由规格则由子类实现
      */
-    public RecyclerView.LayoutManager initLayoutManager() {
+    protected RecyclerView.LayoutManager initLayoutManager() {
         return new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
     }
 
+    /**
+     * 初始化单击事件的监听器，子类选择是否实现
+     * @param mHomeRecyclerviewAdapter
+     */
+    protected void initListener(HomeRecyclerviewAdapter mHomeRecyclerviewAdapter) {
+
+    }
     @Override
     public void onResume() {
         super.onResume();
@@ -264,7 +275,6 @@ public abstract class BaseHomeFragment extends Fragment {
         @Override
         public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
             if (mList.size() < 1) {
-                ToastUtils.showShort("空数据" + mList.size());
                 return;
             }
             //如果正在下拉刷新则放弃监听状态
@@ -310,5 +320,5 @@ public abstract class BaseHomeFragment extends Fragment {
         }
         return max;
     }
-}
 
+}

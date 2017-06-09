@@ -11,11 +11,10 @@ import android.widget.TextView;
 import com.blankj.utilcode.util.TimeUtils;
 import com.leon.lgank.R;
 import com.leon.lgank.common.Constant;
+import com.leon.lgank.common.Utils;
 import com.leon.lgank.image.ImageManager;
 import com.leon.lgank.model.GankModel;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -27,6 +26,13 @@ public class HomeRecyclerviewAdapter extends RecyclerView.Adapter<HomeRecyclervi
     private Context mContext;
     private List<GankModel.ResultsEntity> mListData;
     private int mItemType;//条目布局类型
+    private OnBaseClickListener mBaseClickListener;
+
+    public interface OnBaseClickListener {
+        void onClick(GankModel.ResultsEntity entity);
+
+        void onCoverClick(GankModel.ResultsEntity entity);
+    }
 
     public HomeRecyclerviewAdapter(Context mContext, List<GankModel.ResultsEntity> mListData, int mItemType) {
         this.mContext = mContext;
@@ -48,27 +54,32 @@ public class HomeRecyclerviewAdapter extends RecyclerView.Adapter<HomeRecyclervi
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        GankModel.ResultsEntity resultsEntity = mListData.get(position);
+    public void onBindViewHolder(ViewHolder holder, final int position) {
+      final   GankModel.ResultsEntity resultsEntity = mListData.get(position);
         if (mItemType == Constant.ITEM_TYPE_TEXT) {
             holder.tvTitle.setText(resultsEntity.getDesc());
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss'Z'");
-            try {
-                holder.tvTime.setText(TimeUtils.getFriendlyTimeSpanByNow(simpleDateFormat.parse(resultsEntity.getPublishedAt())));
-            } catch (ParseException e) {
-                e.printStackTrace();
-                holder.tvTime.setText("");
-            }
+            holder.tvTime.setText(TimeUtils.getFriendlyTimeSpanByNow(Utils.formatDateFromStr(resultsEntity.getPublishedAt())));
             holder.tvAuthor.setText(resultsEntity.getWho());
             if (resultsEntity.getImages() != null && resultsEntity.getImages().size() > 0) {
                 ImageManager.getInstance().loadImage(mContext, resultsEntity.getImages().get(0), holder.ivCover);
-            }else{
+            } else {
                 ImageManager.getInstance().loadImage(mContext, R.drawable.placeholder, holder.ivCover);
             }
+            holder.ivCover.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mBaseClickListener.onCoverClick(resultsEntity);
+                }
+            });
         } else {
             ImageManager.getInstance().loadImage(mContext, resultsEntity.getUrl(), holder.ivGirl);
         }
-
+        holder.rootView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mBaseClickListener.onClick(resultsEntity);
+            }
+        });
     }
 
     @Override
@@ -80,7 +91,13 @@ public class HomeRecyclerviewAdapter extends RecyclerView.Adapter<HomeRecyclervi
         this.mListData = mListData;
     }
 
+
+    public void addOnClickListener(OnBaseClickListener baseClickListener) {
+        this.mBaseClickListener = baseClickListener;
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
+        View rootView;
         TextView tvTitle;
         TextView tvAuthor;
         TextView tvTime;
@@ -89,6 +106,7 @@ public class HomeRecyclerviewAdapter extends RecyclerView.Adapter<HomeRecyclervi
 
         public ViewHolder(View itemView) {
             super(itemView);
+            rootView = itemView;
             tvTitle = (TextView) itemView.findViewById(R.id.tv_title);
             tvAuthor = (TextView) itemView.findViewById(R.id.tv_author);
             tvTime = (TextView) itemView.findViewById(R.id.tv_time);
