@@ -109,11 +109,26 @@ public class DetailActivity extends BaseActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        mWebView.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mWebView.onPause();
+    }
+
+
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         //清除缓存
         mWebView.clearCache(true);
         //清除历史记录
         mWebView.clearHistory();
+        mWebView.destroy();
     }
 }

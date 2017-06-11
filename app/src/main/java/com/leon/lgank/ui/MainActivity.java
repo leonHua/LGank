@@ -1,5 +1,6 @@
 package com.leon.lgank.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -14,6 +15,7 @@ import android.view.MenuItem;
 
 import com.leon.lgank.R;
 import com.leon.lgank.adapter.MainAdapter;
+import com.leon.lgank.common.Constant;
 import com.leon.lgank.fragment.HomeFragment;
 import com.leon.lgank.fragment.MeFragment;
 import com.leon.lgank.fragment.ReadFragment;
@@ -130,14 +132,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
+        Intent intent = new Intent(this,OtherCategoryActivity.class);
+        String categroy= Constant.CATEGORY_ALL;
         switch (id) {
-            case R.id.navigation_home:
+            case R.id.menu_draw_client:
+                categroy = Constant.CATEGORY_CLIENT;
                 break;
-            case R.id.navigation_read:
+            case R.id.menu_draw_recommend:
+                categroy = Constant.CATEGROY_RECOMMEND;
                 break;
-            case R.id.navigation_me:
+            case R.id.menu_draw_app:
+                categroy = Constant.CATEGORY_APP;
+                break;
+            case R.id.menu_draw_video:
+                categroy = Constant.CATEGORY_VIDEO;
                 break;
         }
+        intent.putExtra("categroy",categroy);
+        startActivity(intent);
         item.setCheckable(true);
         mDrawer.closeDrawer(GravityCompat.START);
         return true;
