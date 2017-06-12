@@ -46,7 +46,7 @@ public abstract class BaseHomeFragment extends Fragment {
     private EmptyRecyclerView mRecyclerView;
     private HomeRecyclerviewAdapter mHomeRecyclerviewAdapter;
     private Disposable mDisposable;
-    private List<GankModel.ResultsEntity> mList = new ArrayList<>();
+    protected List<GankModel.ResultsEntity> mList = new ArrayList<>();
     private TextView mTvNoNetwork;
     private View mEmptyView;
     private SwipeRefreshLayout mRefreshLayout;

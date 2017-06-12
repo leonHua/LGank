@@ -1,6 +1,8 @@
 package com.leon.lgank.ui;
 
+import android.content.Intent;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -17,9 +19,9 @@ public class DetailActivity extends BaseActivity {
     private WebView mWebView;
 
     @Override
-    protected void initOperation() {
+    protected void initOperation(Intent intent) {
         startLoading();
-        String url = getIntent().getStringExtra("url");
+        String url = intent.getStringExtra("url");
         mWebView = (WebView) mView.findViewById(R.id.webview);
         if (StringUtils.isEmpty(url)) {
             ToastUtils.showShort("地址加载失败，请稍后再试");
@@ -30,12 +32,12 @@ public class DetailActivity extends BaseActivity {
         //加载网页
         mWebView.loadUrl(url);
     }
-
     @Override
     protected View addContentView() {
         mView = View.inflate(this, R.layout.activity_detail, null);
         return mView;
     }
+
 
     @Override
     protected String setToolbarTitle() {
@@ -109,6 +111,16 @@ public class DetailActivity extends BaseActivity {
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_share:
+                startShareIntent("text/plain");
+                break;
+        }
+        return true;
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         mWebView.onResume();
@@ -119,7 +131,6 @@ public class DetailActivity extends BaseActivity {
         super.onPause();
         mWebView.onPause();
     }
-
 
 
     @Override

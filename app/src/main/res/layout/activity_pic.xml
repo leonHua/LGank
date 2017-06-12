@@ -5,11 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.leon.lgank.ui.DetailActivity">
+    android:background="@color/black"
+    tools:context="com.leon.lgank.ui.PicActivity">
 
-    <WebView
-        android:id="@+id/webview"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pic_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></WebView>
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="50dp"/>
 
 </RelativeLayout>

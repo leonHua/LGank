@@ -29,9 +29,9 @@ public class HomeRecyclerviewAdapter extends RecyclerView.Adapter<HomeRecyclervi
     private OnBaseClickListener mBaseClickListener;
 
     public interface OnBaseClickListener {
-        void onClick(GankModel.ResultsEntity entity);
+        void onClick(int position, GankModel.ResultsEntity entity);
 
-        void onCoverClick(GankModel.ResultsEntity entity);
+        void onCoverClick(int position, GankModel.ResultsEntity entity);
     }
 
     public HomeRecyclerviewAdapter(Context mContext, List<GankModel.ResultsEntity> mListData, int mItemType) {
@@ -55,7 +55,7 @@ public class HomeRecyclerviewAdapter extends RecyclerView.Adapter<HomeRecyclervi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-      final   GankModel.ResultsEntity resultsEntity = mListData.get(position);
+        final GankModel.ResultsEntity resultsEntity = mListData.get(position);
         if (mItemType == Constant.ITEM_TYPE_TEXT) {
             holder.tvTitle.setText(resultsEntity.getDesc());
             holder.tvTime.setText(TimeUtils.getFriendlyTimeSpanByNow(Utils.formatDateFromStr(resultsEntity.getPublishedAt())));
@@ -68,7 +68,7 @@ public class HomeRecyclerviewAdapter extends RecyclerView.Adapter<HomeRecyclervi
             holder.ivCover.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mBaseClickListener.onCoverClick(resultsEntity);
+                    mBaseClickListener.onCoverClick(position, resultsEntity);
                 }
             });
         } else {
@@ -77,7 +77,7 @@ public class HomeRecyclerviewAdapter extends RecyclerView.Adapter<HomeRecyclervi
         holder.rootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mBaseClickListener.onClick(resultsEntity);
+                mBaseClickListener.onClick(position, resultsEntity);
             }
         });
     }
