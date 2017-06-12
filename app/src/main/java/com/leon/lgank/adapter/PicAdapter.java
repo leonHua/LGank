@@ -39,12 +39,13 @@ public class PicAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        //ImageView imageView = new ImageView(mContext);
+//        ImageView imageView = new ImageView(mContext);
         PinchImageView imageView = new PinchImageView(mContext);
         imageView.setImageResource(R.drawable.header);
-        imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-        container.addView(imageView);
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         ImageManager.getInstance().loadImage(mContext, mListUrl.get(position), imageView);
+        com.orhanobut.logger.Logger.i("URL--" + mListUrl.get(position));
+        container.addView(imageView);
         return imageView;
     }
 

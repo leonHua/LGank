@@ -17,18 +17,15 @@ public class PicActivity extends BaseActivity {
     protected void initOperation(Intent intent) {
         List<String> list = intent.getStringArrayListExtra("piclist");
         int currentPosition = intent.getIntExtra("position", 0);
-       // updateToolBar();
+        // updateToolBar();
         PicAdapter picAdapter = new PicAdapter(this, list);
         mViewPager.setAdapter(picAdapter);
-        mViewPager.setCurrentItem(currentPosition);
+        if (currentPosition != 0) {
+            mViewPager.setCurrentItem(currentPosition);
+        }
+
     }
 
-    /**
-     * 更新重新定制Toolbar
-     */
-    private void updateToolBar() {
-        mToolbar.setBackgroundColor(getResources().getColor(R.color.black));
-    }
 
     @Override
     protected View addContentView() {

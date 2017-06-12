@@ -1,6 +1,7 @@
 package com.leon.lgank.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -23,6 +24,7 @@ import com.leon.lgank.common.Constant;
 import com.leon.lgank.model.GankModel;
 import com.leon.lgank.net.Api;
 import com.leon.lgank.net.HttpManager;
+import com.leon.lgank.ui.PicActivity;
 import com.leon.lgank.widget.EmptyRecyclerView;
 import com.orhanobut.logger.Logger;
 import com.wang.avi.AVLoadingIndicatorView;
@@ -54,8 +56,6 @@ public abstract class BaseHomeFragment extends Fragment {
     private AVLoadingIndicatorView mAviLoadMore;
     private int mPage = 1;
     private LinearLayout mLayoutLoadMore;
-
-
 
 
     @Override
@@ -99,11 +99,13 @@ public abstract class BaseHomeFragment extends Fragment {
 
     /**
      * 初始化单击事件的监听器，子类选择是否实现
+     *
      * @param mHomeRecyclerviewAdapter
      */
     protected void initListener(HomeRecyclerviewAdapter mHomeRecyclerviewAdapter) {
 
     }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -266,6 +268,17 @@ public abstract class BaseHomeFragment extends Fragment {
         if (mDisposable != null && !mDisposable.isDisposed()) {
             mDisposable.dispose();
         }
+    }
+
+    /**
+     * 默认点击缩率图跳转到图片展示界面,子类可以选择调用
+     */
+    protected void cloverClick(int position, GankModel.ResultsEntity entity) {
+        Intent intent = new Intent(mContext, PicActivity.class);
+        ArrayList mListPicUrls = new ArrayList<>();
+        mListPicUrls = (ArrayList) entity.getImages();
+        intent.putStringArrayListExtra("piclist", mListPicUrls);
+        startActivity(intent);
     }
 
     /**

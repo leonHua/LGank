@@ -31,15 +31,15 @@ public class HomeAndroidFragment extends BaseHomeFragment {
     protected void initListener(HomeRecyclerviewAdapter mHomeRecyclerviewAdapter) {
         mHomeRecyclerviewAdapter.addOnClickListener(new OnBaseClickListener() {
             @Override
-            public void onClick(int position ,GankModel.ResultsEntity entity) {
+            public void onClick(int position, GankModel.ResultsEntity entity) {
                 Intent intent = new Intent(mContext, DetailActivity.class);
                 intent.putExtra("url", entity.getUrl());
                 startActivity(intent);
             }
 
             @Override
-            public void onCoverClick(int position ,GankModel.ResultsEntity entity) {
-                ToastUtils.showShortSafe("点击头像");
+            public void onCoverClick(int position, GankModel.ResultsEntity entity) {
+                cloverClick(position, entity);
             }
         });
     }

@@ -37,7 +37,7 @@ public class HomeIOSFragment extends BaseHomeFragment {
 
             @Override
             public void onCoverClick(int position ,GankModel.ResultsEntity entity) {
-                ToastUtils.showShortSafe("点击头像");
+                cloverClick(position, entity);
             }
         });
     }
