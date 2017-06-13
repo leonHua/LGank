@@ -1,6 +1,8 @@
 package com.leon.lgank.ui;
 
+import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.Gravity;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.flexbox.FlexboxLayout;
+import com.jude.swipbackhelper.SwipeBackHelper;
 import com.leon.lgank.R;
 import com.leon.lgank.adapter.HistorySearchAdapter;
 import com.leon.lgank.common.IPreference;
@@ -29,14 +32,17 @@ public class SearchActivity extends AppCompatActivity {
     private List<String> mHotTitles = new ArrayList<String>();
     private List<String> mHistoryTitles = new ArrayList<String>();
     private ImageView mIvDeleteAll;
+    private ImageView mIvBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        SwipeBackHelper.onCreate(this);
         mFlexboxLayout = (FlexboxLayout) findViewById(R.id.flexbox_layout);
         mRecyclerViewHistory = (EmptyRecyclerView) findViewById(R.id.recyclerview_history);
         mIvDeleteAll = (ImageView) findViewById(R.id.iv_deleteall);
+        mIvBack = (ImageView) findViewById(R.id.iv_back);
         mPreUtils = (PreferenceImpl) IPreference.prefHolder.getPreference(this, HISTORY_SEARCH);
 
         if (mPreUtils.getAll(HISTORY_SEARCH) != null) {
@@ -59,6 +65,12 @@ public class SearchActivity extends AppCompatActivity {
                 mHistoryTitles.clear();
                 mHistorySearchAdapter.setmListData(mPreUtils.getAll(HISTORY_SEARCH));
                 mHistorySearchAdapter.notifyDataSetChanged();
+            }
+        });
+        mIvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
         initTag();
@@ -88,7 +100,8 @@ public class SearchActivity extends AppCompatActivity {
             textView.setGravity(Gravity.CENTER);
             textView.setPadding(30, 30, 30, 30);
             textView.setClickable(true);
-            textView.setTextColor(getResources().getColor(R.color.secondary_text));
+            textView.setFocusable(true);
+            textView.setTextColor(getResources().getColor(R.color.flexbox_text_color));
             mFlexboxLayout.addView(textView);
             //通过FlexboxLayout.LayoutParams 设置子元素支持的属性
             ViewGroup.LayoutParams params = textView.getLayoutParams();
@@ -104,12 +117,23 @@ public class SearchActivity extends AppCompatActivity {
                     ToastUtils.showShort(tv.getText());
                     mHistoryTitles.add(tv.getText().toString().trim());
                     mPreUtils.putAll(HISTORY_SEARCH, mHistoryTitles);
-
                     mHistorySearchAdapter.setmListData(mPreUtils.getAll(HISTORY_SEARCH));
                     mHistorySearchAdapter.notifyDataSetChanged();
                 }
             });
         }
 
+    }
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        SwipeBackHelper.onPostCreate(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SwipeBackHelper.onDestroy(this);
     }
 }

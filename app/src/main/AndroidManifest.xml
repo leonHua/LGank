@@ -32,7 +32,8 @@
         <activity
             android:name=".ui.PicActivity"
             android:theme="@style/PicTheme"/>
-        <activity android:name=".ui.SearchActivity">
+        <activity android:name=".ui.SearchActivity"
+            android:theme="@style/BaseTheme">
         </activity>
     </application>
 

@@ -9,9 +9,14 @@ package com.leon.lgank.common;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.orhanobut.logger.Logger;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -134,7 +139,7 @@ public class PreferenceImpl implements IPreference {
     public void putAll(String key, List<String> list, Comparator<String> comparator) {
         Set<String> set = null;
         if (comparator == null) {
-            set = new TreeSet<>();
+            set = new LinkedHashSet<>();
         } else {
             set = new TreeSet<>(comparator);
         }

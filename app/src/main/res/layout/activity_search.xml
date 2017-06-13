@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -15,23 +14,16 @@
 
         <ImageView
             android:id="@+id/iv_back"
+            android:clickable="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:src="@mipmap/menu_action_back"/>
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_centerVertical="true"
-            android:background="@color/white"
-            android:drawableLeft="@mipmap/menu_action_search"
-            android:drawablePadding="8dp"
-            android:hint="请输入搜索内容"
-            android:padding="8dp"/>
+            android:background="?attr/selectableItemBackground"
+            android:padding="16dp"
+            android:src="@mipmap/menu_action_back" />
 
         <TextView
+            android:id="@+id/tv_search"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
@@ -40,21 +32,40 @@
             android:padding="10dp"
             android:text="搜索"
             android:textColor="@color/secondary_text"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/tv_search"
+            android:layout_toRightOf="@id/iv_back"
+            android:background="@drawable/search_edittext"
+            android:drawableLeft="@mipmap/menu_action_search"
+            android:drawablePadding="8dp"
+            android:hint="请输入搜索内容           "
+            android:padding="8dp"
+            android:textSize="16sp" />
+
+
     </RelativeLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:layout_marginTop="2dp"
+        android:padding="12dp"
         android:text="热门搜索"
-        android:textColor="@color/secondary_text"/>
+        android:textColor="@color/secondary_text" />
 
     <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/flexbox_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="6dp"
         android:padding="8dp"
         app:alignContent="flex_start"
         app:alignItems="center"
@@ -73,9 +84,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:padding="10dp"
+            android:padding="12dp"
             android:text="历史记录"
-            android:textColor="@color/secondary_text"/>
+            android:textColor="@color/secondary_text" />
 
         <ImageView
             android:id="@+id/iv_deleteall"
@@ -84,13 +95,15 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="16dp"
-            android:src="@mipmap/delete"/>
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:padding="10dp"
+            android:src="@mipmap/delete" />
     </RelativeLayout>
 
     <com.leon.lgank.widget.EmptyRecyclerView
         android:id="@+id/recyclerview_history"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
