@@ -8,20 +8,31 @@
         <item name="colorAccent">@color/colorAccent</item>
         <!-- 溢出菜单图标颜色-->
         <item name="colorControlNormal">@android:color/white</item>
+        <!-- 为滑动关闭Activity添加的属性 -->
+        <item name="android:windowIsTranslucent">false</item>//就是关掉这个Activity的透明背景
     </style>
 
-    <style name="AppTheme.NoActionBar">
+<!--    <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-    </style>
+    </style>-->
 
-    <style name="PicTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+    <style name="PicTheme" parent="BaseTheme">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/black</item>
         <item name="colorPrimaryDark">@color/black</item>
         <item name="colorAccent">@color/colorAccent</item>
         <!-- 溢出菜单图标颜色-->
         <item name="colorControlNormal">@android:color/white</item>
+    </style>
+
+    <style name="BaseTheme" parent="AppTheme">
+        <!-- 为滑动关闭Activity添加的属性 -->
+        //背景透明，不设滑动关闭时背景就是黑的。
+        <item name="android:windowIsTranslucent">true</item>
+        //Activity右滑进出的动画，觉得这个不好看随便换成自己的
+        <item name="android:windowAnimationStyle">@style/SlideRightAnimation</item>
     </style>
 
 </resources>

@@ -20,13 +20,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="10dp"
+        android:padding="16dp"
         android:text="leonHua"
         android:textColor="@color/secondary_text"
         android:textSize="20sp" />
 
 
-    <com.leon.lib.settingview.LSettingItem xmlns:app="http://schemas.android.com/apk/res-auto"
+
+
+
+    <com.leon.lib.settingview.LSettingItem
         android:id="@+id/item_one"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

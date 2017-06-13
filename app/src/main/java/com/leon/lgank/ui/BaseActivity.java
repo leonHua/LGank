@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.jude.swipbackhelper.SwipeBackHelper;
 import com.leon.lgank.R;
 import com.wang.avi.AVLoadingIndicatorView;
 
@@ -35,6 +36,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         mRootLayout.addView(addContentView());
         //界面加载完成，调取子类具体业务
         initOperation(intent);
+        SwipeBackHelper.onCreate(this);
     }
 
     /**
@@ -116,5 +118,17 @@ public abstract class BaseActivity extends AppCompatActivity {
         share_intent.setType(type);
         share_intent = Intent.createChooser(share_intent, "分享");
         startActivity(share_intent);
+    }
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        SwipeBackHelper.onPostCreate(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SwipeBackHelper.onDestroy(this);
     }
 }

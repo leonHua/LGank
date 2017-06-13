@@ -39,4 +39,5 @@ dependencies {
     compile 'com.github.clans:fab:1.6.4'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.leon:lsettingviewlibrary:1.2.0'
+    compile 'com.jude:swipebackhelper:3.1.2'
 }

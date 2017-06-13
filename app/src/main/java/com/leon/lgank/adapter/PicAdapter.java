@@ -43,7 +43,11 @@ public class PicAdapter extends PagerAdapter {
         PinchImageView imageView = new PinchImageView(mContext);
         imageView.setImageResource(R.drawable.header);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        ImageManager.getInstance().loadImage(mContext, mListUrl.get(position), imageView);
+        if (mListUrl == null || mListUrl.size() < 1) {
+            ImageManager.getInstance().loadImage(mContext, R.drawable.placeholder, imageView);
+        } else {
+            ImageManager.getInstance().loadImage(mContext, mListUrl.get(position), imageView);
+        }
         com.orhanobut.logger.Logger.i("URL--" + mListUrl.get(position));
         container.addView(imageView);
         return imageView;
