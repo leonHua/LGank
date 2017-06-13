@@ -12,26 +12,26 @@ import android.webkit.WebViewClient;
 import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.leon.lgank.R;
-import com.orhanobut.logger.Logger;
 
 public class DetailActivity extends BaseActivity {
     private View mView;
     private WebView mWebView;
+    private String mUrl;
 
     @Override
     protected void initOperation(Intent intent) {
         startLoading();
-        String url = intent.getStringExtra("url");
+        mUrl = intent.getStringExtra("url");
         mWebView = (WebView) mView.findViewById(R.id.webview);
-        if (StringUtils.isEmpty(url)) {
+        if (StringUtils.isEmpty(mUrl)) {
             ToastUtils.showShort("地址加载失败，请稍后再试");
             return;
         }
         initWebView();
-        Logger.i("地址:" + url);
         //加载网页
-        mWebView.loadUrl(url);
+        mWebView.loadUrl(mUrl);
     }
+
     @Override
     protected View addContentView() {
         mView = View.inflate(this, R.layout.activity_detail, null);
@@ -114,7 +114,7 @@ public class DetailActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_share:
-                startShareIntent("text/plain");
+                startShareIntent("text/plain", "分享一篇实用文章：" + mUrl);
                 break;
         }
         return true;

@@ -28,6 +28,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
+        SwipeBackHelper.onCreate(this);
+        SwipeBackHelper.getCurrentPage(this).setSwipeBackEnable(stopSwipe());
         Intent intent = getIntent();
         initToolbar();
         mRootLayout = (LinearLayout) findViewById(R.id.root_layout);
@@ -36,7 +38,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         mRootLayout.addView(addContentView());
         //界面加载完成，调取子类具体业务
         initOperation(intent);
-        SwipeBackHelper.onCreate(this);
     }
 
     /**
@@ -78,7 +79,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        getMenuInflater().inflate(R.menu.menu_base_toolbar, menu);
         return true;
     }
 
@@ -112,10 +113,11 @@ public abstract class BaseActivity extends AppCompatActivity {
      *
      * @param type
      */
-    public void startShareIntent(String type) {
+    public void startShareIntent(String type, String content) {
         Intent share_intent = new Intent();
         share_intent.setAction(Intent.ACTION_SEND);
         share_intent.setType(type);
+        share_intent.putExtra(Intent.EXTRA_TEXT, content);
         share_intent = Intent.createChooser(share_intent, "分享");
         startActivity(share_intent);
     }
@@ -130,5 +132,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         SwipeBackHelper.onDestroy(this);
+    }
+
+    protected boolean stopSwipe() {
+        return true;
     }
 }

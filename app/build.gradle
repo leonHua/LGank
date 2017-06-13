@@ -40,4 +40,5 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.leon:lsettingviewlibrary:1.2.0'
     compile 'com.jude:swipebackhelper:3.1.2'
+    compile 'com.google.android:flexbox:0.2.6'
 }

@@ -31,7 +31,9 @@
             android:theme="@style/BaseTheme"/>
         <activity
             android:name=".ui.PicActivity"
-            android:theme="@style/PicTheme"></activity>
+            android:theme="@style/PicTheme"/>
+        <activity android:name=".ui.SearchActivity">
+        </activity>
     </application>
 
 </manifest>

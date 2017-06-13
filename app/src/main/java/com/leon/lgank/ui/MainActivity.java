@@ -11,6 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.leon.lgank.R;
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        startActivity(new Intent(this, SearchActivity.class));
         initToolbar();
         initView();
         initFragment();
@@ -119,6 +121,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main_toolbar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_search) {
+            startActivity(new Intent(this, SearchActivity.class));
+        }
+        return true;
+    }
+
     /**
      * 初始化Fragment对象
      */
@@ -132,8 +148,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        Intent intent = new Intent(this,OtherCategoryActivity.class);
-        String categroy= Constant.CATEGORY_ALL;
+        Intent intent = new Intent(this, OtherCategoryActivity.class);
+        String categroy = Constant.CATEGORY_ALL;
         switch (id) {
             case R.id.menu_draw_client:
                 categroy = Constant.CATEGORY_CLIENT;
@@ -148,12 +164,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 categroy = Constant.CATEGORY_VIDEO;
                 break;
         }
-        intent.putExtra("categroy",categroy);
+        intent.putExtra("categroy", categroy);
         startActivity(intent);
         item.setCheckable(true);
         mDrawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawlayout);
