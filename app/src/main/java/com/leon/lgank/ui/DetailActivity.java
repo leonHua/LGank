@@ -2,6 +2,7 @@ package com.leon.lgank.ui;
 
 import android.content.Intent;
 import android.view.KeyEvent;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -118,6 +119,11 @@ public class DetailActivity extends BaseActivity {
                 break;
         }
         return true;
+    }
+
+    @Override
+    protected void updateOptionsMenu(Menu menu) {
+        menu.findItem(R.id.action_download).setVisible(false);
     }
 
     @Override

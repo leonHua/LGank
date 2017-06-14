@@ -64,7 +64,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     private void initToolbar() {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbar.setTitle(setToolbarTitle());
-        mToolbar.setTitleTextColor(getResources().getColor(R.color.primary_text));
         setSupportActionBar(mToolbar);
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -80,7 +79,16 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_base_toolbar, menu);
+        updateOptionsMenu(menu);
         return true;
+    }
+
+    /**
+     * 子类可以根据需要动态更新菜单
+     *
+     * @param menu
+     */
+    protected void updateOptionsMenu(Menu menu) {
     }
 
     /**
