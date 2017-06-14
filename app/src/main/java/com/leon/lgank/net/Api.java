@@ -27,4 +27,8 @@ public interface Api {
                                           @Path("pageSize") int pageSize,
                                           @Path("page") int page);
 
+    @GET("search/query/{searchkey}/category/all/count/10/page/{page}")
+    Observable<GankModel> getSearchData(@Path("searchkey") String searchkey,
+                                        @Path("page") int page);
+
 }

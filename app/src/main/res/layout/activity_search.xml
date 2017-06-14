@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.leon.lgank.ui.SearchActivity">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context="com.leon.lgank.ui.SearchActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,15 +14,17 @@
 
         <ImageView
             android:id="@+id/iv_back"
-            android:clickable="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:background="?attr/selectableItemBackground"
+            android:clickable="true"
             android:padding="16dp"
-            android:src="@mipmap/menu_action_back" />
+            android:src="@mipmap/menu_action_back"/>
 
         <TextView
+            android:clickable="true"
+            android:background="?attr/selectableItemBackground"
             android:id="@+id/tv_search"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -31,10 +33,11 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="搜索"
-            android:textColor="@color/secondary_text"
-            android:textSize="18sp" />
+            android:textColor="@color/primary_text"
+            android:textSize="18sp"/>
 
         <EditText
+            android:id="@+id/et_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -48,18 +51,19 @@
             android:drawablePadding="8dp"
             android:hint="请输入搜索内容           "
             android:padding="8dp"
-            android:textSize="16sp" />
+            android:textSize="16sp"/>
 
 
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/tv_hotsearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:padding="12dp"
         android:text="热门搜索"
-        android:textColor="@color/secondary_text" />
+        android:textColor="@color/secondary_text"/>
 
     <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/flexbox_layout"
@@ -77,6 +81,7 @@
     </com.google.android.flexbox.FlexboxLayout>
 
     <RelativeLayout
+        android:id="@+id/layout_history"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -86,7 +91,7 @@
             android:layout_centerVertical="true"
             android:padding="12dp"
             android:text="历史记录"
-            android:textColor="@color/secondary_text" />
+            android:textColor="@color/secondary_text"/>
 
         <ImageView
             android:id="@+id/iv_deleteall"
@@ -98,12 +103,61 @@
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:padding="10dp"
-            android:src="@mipmap/delete" />
+            android:src="@mipmap/delete"/>
     </RelativeLayout>
 
-    <com.leon.lgank.widget.EmptyRecyclerView
-        android:id="@+id/recyclerview_history"
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/avi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        app:indicatorColor="@color/colorPrimary"
+        app:indicatorName="BallSpinFadeLoaderIndicator"/>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/layout_loadmore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="6dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:visibility="gone">
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/avi_loadmore"
+                style="@style/AVLoadingIndicatorView.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:indicatorColor="@color/colorPrimary"
+                app:indicatorName="LineScalePartyIndicator"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:gravity="center"
+                android:text="加载更多"
+                android:textColor="@color/secondary_text"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
+
+        <com.leon.lgank.widget.EmptyRecyclerView
+            android:id="@+id/recyclerview_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/layout_loadmore"/>
+
+    </RelativeLayout>
+
 
 </LinearLayout>

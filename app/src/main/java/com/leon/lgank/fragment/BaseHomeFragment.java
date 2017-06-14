@@ -177,12 +177,10 @@ public abstract class BaseHomeFragment extends Fragment {
                         //更新界面数据
                         if (Constant.GET_DATA_TYPE_NOMAL == type) {
                             //正常模式下，清空之前数据，重新加载
-                            Logger.d("eee" + value.getResults().size());
                             mList.clear();
                             mList = value.getResults();
                         } else {
                             //加载更多模式
-                            Logger.d("ddd" + value.getResults().size());
                             mList.addAll(value.getResults());
                         }
 
