@@ -18,6 +18,7 @@ public class DetailActivity extends BaseActivity {
     private View mView;
     private WebView mWebView;
     private String mUrl;
+    private boolean mIsSave = false;
 
     @Override
     protected void initOperation(Intent intent) {
@@ -116,6 +117,17 @@ public class DetailActivity extends BaseActivity {
         switch (item.getItemId()) {
             case R.id.action_share:
                 startShareIntent("text/plain", "分享一篇实用文章：" + mUrl);
+                break;
+            case R.id.action_save:
+                mIsSave = mIsSave ? false : true;
+                if (mIsSave) {
+                    ToastUtils.showShortSafe("收藏成功");
+                    item.setIcon(R.mipmap.menu_action_save_choosen);
+                } else {
+                    ToastUtils.showShortSafe("取消收藏");
+                    item.setIcon(R.mipmap.menu_action_save);
+                }
+
                 break;
         }
         return true;

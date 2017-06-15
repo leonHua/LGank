@@ -3,6 +3,7 @@ package com.leon.lgank.ui;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v4.view.ViewPager;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -132,6 +133,10 @@ public class PicActivity extends BaseActivity {
         return ImageUtils.save(bitmap, filePath, Bitmap.CompressFormat.JPEG);
     }
 
+    @Override
+    protected void updateOptionsMenu(Menu menu) {
+        menu.findItem(R.id.action_save).setVisible(false);
+    }
 
     @Override
     protected String setToolbarTitle() {

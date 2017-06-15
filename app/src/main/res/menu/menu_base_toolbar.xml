@@ -7,6 +7,12 @@
         android:icon="@mipmap/menu_action_share"
         android:title="分享"
         app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_save"
+        android:icon="@mipmap/menu_action_save"
+        android:title="收藏"
+        app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/action_download"
         android:icon="@mipmap/menu_action_download"

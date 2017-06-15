@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.TimeUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.leon.lgank.R;
 import com.leon.lgank.common.Constant;
 import com.leon.lgank.common.Utils;
@@ -63,12 +64,16 @@ public class HomeRecyclerviewAdapter extends RecyclerView.Adapter<HomeRecyclervi
             if (resultsEntity.getImages() != null && resultsEntity.getImages().size() > 0) {
                 ImageManager.getInstance().loadImage(mContext, resultsEntity.getImages().get(0), holder.ivCover);
             } else {
-                ImageManager.getInstance().loadImage(mContext, R.drawable.placeholder, holder.ivCover);
+                ImageManager.getInstance().loadImage(mContext, R.drawable.notfound, holder.ivCover);
             }
             holder.ivCover.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mBaseClickListener.onCoverClick(position, resultsEntity);
+                    if (resultsEntity.getImages() != null && resultsEntity.getImages().size() > 0) {
+                        mBaseClickListener.onCoverClick(position, resultsEntity);
+                    }else{
+                        ToastUtils.showShortSafe("木有发现图片哟");
+                    }
                 }
             });
         } else {
