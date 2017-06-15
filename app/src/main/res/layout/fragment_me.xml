@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_header"
         android:layout_width="120dp"
@@ -20,19 +21,42 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="16dp"
+        android:padding="12dp"
         android:text="leonHua"
-        android:textColor="@color/secondary_text"
-        android:textSize="20sp" />
-
-
-
+        android:textSize="18sp" />
 
 
     <com.leon.lib.settingview.LSettingItem
-        android:id="@+id/item_one"
+        android:layout_marginTop="16dp"
+        android:id="@+id/item_blog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        leon:leftText="我的消息" />
+        leon:leftIcon="@mipmap/blog"
+        leon:leftText="我的博客" />
+
+    <com.leon.lib.settingview.LSettingItem
+        android:id="@+id/item_version"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        leon:leftIcon="@mipmap/version"
+        leon:isShowRightText="true"
+        leon:rightTextColor="@color/secondary_text"
+        leon:leftText="版本号"
+        leon:rightText="V1.0" />
+
+    <com.leon.lib.settingview.LSettingItem
+        android:id="@+id/item_follow"
+        android:layout_width="match_parent"
+        leon:leftIcon="@mipmap/save"
+        android:layout_height="wrap_content"
+        leon:leftText="Follow Me" />
+
+    <com.leon.lib.settingview.LSettingItem
+        android:id="@+id/item_save"
+        android:layout_width="match_parent"
+        leon:leftIcon="@mipmap/like"
+        android:layout_height="wrap_content"
+        leon:isShowUnderLine="false"
+        leon:leftText="已收藏" />
 
 </LinearLayout>

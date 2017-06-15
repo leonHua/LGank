@@ -9,7 +9,7 @@
         android:background="@color/gray"
         android:id="@+id/tab_layout"
         app:tabSelectedTextColor="@color/colorAccent"
-        app:tabTextColor="@color/white"
+        app:tabTextColor="@color/secondary_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

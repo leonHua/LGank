@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="200dp"
-              android:background="@color/colorPrimary"
-              android:gravity="center"
-              android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:background="@drawable/headbg">
 
-    <ImageView
-        android:id="@+id/iv_header"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/header"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:padding="10dp"
         android:text="leonHua"
-        android:textSize="22sp"/>
-</LinearLayout>
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/secondary_text"
+        android:textSize="22sp" />
+</RelativeLayout>
