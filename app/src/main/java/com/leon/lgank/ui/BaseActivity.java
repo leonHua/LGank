@@ -3,7 +3,6 @@ package com.leon.lgank.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
@@ -13,12 +12,14 @@ import com.jude.swipbackhelper.SwipeBackHelper;
 import com.leon.lgank.R;
 import com.wang.avi.AVLoadingIndicatorView;
 
+import skin.support.app.SkinCompatActivity;
+
 /**
  * 作者：Leon
  * 时间：2017/6/9
  * 描述:
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends SkinCompatActivity{
     protected Toolbar mToolbar;
     private LinearLayout mRootLayout;
     private AVLoadingIndicatorView mLoading;

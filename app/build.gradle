@@ -41,4 +41,6 @@ dependencies {
     compile 'com.leon:lsettingviewlibrary:1.2.0'
     compile 'com.jude:swipebackhelper:3.1.2'
     compile 'com.google.android:flexbox:0.2.6'
+    compile 'skin.support:skin-support:1.2.7'
+    compile 'skin.support:skin-support-design:1.2.4'
 }

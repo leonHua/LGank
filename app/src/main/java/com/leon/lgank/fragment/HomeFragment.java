@@ -28,6 +28,7 @@ public class HomeFragment extends Fragment {
     private String[] mTitles = new String[]{"Android", "IOS", "福利"};
     private TabLayout mTabLayout;
 
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
