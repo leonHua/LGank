@@ -1,12 +1,16 @@
 package com.leon.lgank.ui;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.LayoutInflaterCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -24,14 +28,24 @@ import com.leon.lgank.fragment.ReadFragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import skin.support.SkinCompatManager;
+import skin.support.app.SkinCompatDelegate;
+import skin.support.content.res.SkinCompatResources;
+import skin.support.observe.SkinObservable;
+import skin.support.observe.SkinObserver;
+import skin.support.widget.SkinCompatThemeUtils;
+
+import static skin.support.widget.SkinCompatHelper.INVALID_ID;
+import static skin.support.widget.SkinCompatHelper.checkResourceId;
+
 /**
  * 主Activity
  */
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, SkinObserver {
     private final int NAVIGATION_HOME = 0;
     private final int NAVIGATION_READ = 1;
     private final int NAVIGATION_ME = 2;
-
+    private SkinCompatDelegate mSkinDelegate;//换肤实现
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -61,8 +75,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        LayoutInflaterCompat.setFactory(getLayoutInflater(), getSkinDelegate());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        updateStatusBarColor();
+        updateWindowBackground();
         initToolbar();
         initView();
         initFragment();
@@ -178,5 +195,68 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else {
             super.onBackPressed();
         }
+    }
+
+    @NonNull
+    public SkinCompatDelegate getSkinDelegate() {
+        if (mSkinDelegate == null) {
+            mSkinDelegate = SkinCompatDelegate.create(this);
+        }
+        return mSkinDelegate;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SkinCompatManager.getInstance().addObserver(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SkinCompatManager.getInstance().deleteObserver(this);
+    }
+
+    /**
+     * @return true: 打开5.0以上状态栏换肤, false: 关闭5.0以上状态栏换肤;
+     */
+    protected boolean skinStatusBarColorEnable() {
+        return true;
+    }
+
+    protected void updateStatusBarColor() {
+        if (skinStatusBarColorEnable() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            int statusBarColorResId = SkinCompatThemeUtils.getStatusBarColorResId(this);
+            int colorPrimaryDarkResId = SkinCompatThemeUtils.getColorPrimaryDarkResId(this);
+            if (checkResourceId(statusBarColorResId) != INVALID_ID) {
+                getWindow().setStatusBarColor(SkinCompatResources.getInstance().getColor(statusBarColorResId));
+            } else if (checkResourceId(colorPrimaryDarkResId) != INVALID_ID) {
+                getWindow().setStatusBarColor(SkinCompatResources.getInstance().getColor(colorPrimaryDarkResId));
+            }
+        }
+    }
+
+    protected void updateWindowBackground() {
+        int windowBackgroundResId = SkinCompatThemeUtils.getWindowBackgroundResId(this);
+        if (checkResourceId(windowBackgroundResId) != INVALID_ID) {
+            String typeName = getResources().getResourceTypeName(windowBackgroundResId);
+            if ("color".equals(typeName)) {
+                Drawable drawable = new ColorDrawable(SkinCompatResources.getInstance().getColor(windowBackgroundResId));
+                getWindow().setBackgroundDrawable(drawable);
+            } else if ("drawable".equals(typeName)) {
+                Drawable drawable = SkinCompatResources.getInstance().getDrawable(windowBackgroundResId);
+                getWindow().setBackgroundDrawable(drawable);
+            } else if ("mipmap".equals(typeName)) {
+                Drawable drawable = SkinCompatResources.getInstance().getMipmap(windowBackgroundResId);
+                getWindow().setBackgroundDrawable(drawable);
+            }
+        }
+    }
+
+    @Override
+    public void updateSkin(SkinObservable observable, Object o) {
+        updateStatusBarColor();
+        updateWindowBackground();
+        getSkinDelegate().applySkin();
     }
 }

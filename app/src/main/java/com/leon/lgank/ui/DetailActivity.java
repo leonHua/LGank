@@ -14,19 +14,12 @@ import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.leon.lgank.R;
 
-import skin.support.SkinCompatManager;
-
 public class DetailActivity extends BaseActivity {
     private View mView;
     private WebView mWebView;
     private String mUrl;
     private boolean mIsSave = false;
 
-    public void changeskin(View view) {
-        ToastUtils.showShort("change");
-        // 指定皮肤插件
-        SkinCompatManager.getInstance().loadSkin("night.skin", null);
-    }
 
     @Override
     protected void initOperation(Intent intent) {

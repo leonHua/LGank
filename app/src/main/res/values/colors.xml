@@ -14,4 +14,13 @@
     <color name="red">#E62739</color>
     <color name="gray">#DEDCEE</color>
     <color name="black">#212121</color>
+    <!--主题颜色定义-->
+    <color name="skin_default">#379392</color>
+    <color name="skin_blue">#5082B4</color>
+    <color name="skin_yellow">#F9C134</color>
+    <color name="skin_pick">#FCBCB8</color>
+    <color name="skin_purple">#9579BB</color>
+    <color name="skin_red">#FC6453</color>
+
+
 </resources>
