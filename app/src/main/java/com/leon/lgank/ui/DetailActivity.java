@@ -25,7 +25,7 @@ public class DetailActivity extends BaseActivity {
     public void changeskin(View view) {
         ToastUtils.showShort("change");
         // 指定皮肤插件
-        SkinCompatManager.getInstance().loadSkin("skins/skin_blue.skin", null);
+        SkinCompatManager.getInstance().loadSkin("night.skin", null);
     }
 
     @Override
