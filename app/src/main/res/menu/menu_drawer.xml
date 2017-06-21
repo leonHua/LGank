@@ -18,4 +18,9 @@
         android:id="@+id/menu_draw_video"
         android:icon="@mipmap/drawer_icon_video"
         android:title="@string/menu_draw_video"/>
+
+    <item
+        android:id="@+id/menu_draw_theme"
+        android:icon="@mipmap/drawer_icon_video"
+        android:title="@string/menu_draw_theme"/>
 </menu>

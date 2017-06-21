@@ -12,10 +12,10 @@
         <item name="android:windowIsTranslucent">false</item>//就是关掉这个Activity的透明背景
     </style>
 
-<!--    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>-->
+    <!--    <style name="AppTheme.NoActionBar">
+            <item name="windowActionBar">false</item>
+            <item name="windowNoTitle">true</item>
+        </style>-->
 
 
     <style name="PicTheme" parent="BaseTheme">
@@ -44,6 +44,7 @@
         <item name="android:clickable">true</item>
         <item name="android:gravity">center</item>
         <item name="android:padding">6dp</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
     </style>
 
     <style name="theme_text_style">

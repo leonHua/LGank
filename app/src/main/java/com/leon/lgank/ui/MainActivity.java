@@ -164,28 +164,44 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        Intent intent = new Intent(this, OtherCategoryActivity.class);
         String categroy = Constant.CATEGORY_ALL;
         switch (id) {
             case R.id.menu_draw_client:
                 categroy = Constant.CATEGORY_CLIENT;
+                showCategoryInfo(categroy);
                 break;
             case R.id.menu_draw_recommend:
                 categroy = Constant.CATEGROY_RECOMMEND;
+                showCategoryInfo(categroy);
                 break;
             case R.id.menu_draw_app:
                 categroy = Constant.CATEGORY_APP;
+                showCategoryInfo(categroy);
                 break;
             case R.id.menu_draw_video:
                 categroy = Constant.CATEGORY_VIDEO;
+                showCategoryInfo(categroy);
+                break;
+            case R.id.menu_draw_theme:
+                Intent intent = new Intent(this, ThemeActivity.class);
+                startActivity(intent);
                 break;
         }
-        intent.putExtra("categroy", categroy);
-        startActivity(intent);
         item.setCheckable(true);
         mDrawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    /**
+     * 跳转到分类展示界面
+     * @param categroy
+     */
+    private void showCategoryInfo(String categroy) {
+        Intent intent = new Intent(this, OtherCategoryActivity.class);
+        intent.putExtra("categroy", categroy);
+        startActivity(intent);
+    }
+
 
     @Override
     public void onBackPressed() {

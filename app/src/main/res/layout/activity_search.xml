@@ -112,7 +112,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
-        app:indicatorColor="@color/colorPrimary"
+        app:indicatorColor="?attr/colorPrimary"
         app:indicatorName="BallSpinFadeLoaderIndicator"/>
 
     <RelativeLayout
@@ -137,7 +137,7 @@
                 style="@style/AVLoadingIndicatorView.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:indicatorColor="@color/colorPrimary"
+                app:indicatorColor="?attr/colorPrimary"
                 app:indicatorName="LineScalePartyIndicator"/>
 
             <TextView

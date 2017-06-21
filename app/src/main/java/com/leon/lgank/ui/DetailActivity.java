@@ -161,4 +161,5 @@ public class DetailActivity extends BaseActivity {
         mWebView.clearHistory();
         mWebView.destroy();
     }
+
 }

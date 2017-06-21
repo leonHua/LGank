@@ -13,31 +13,31 @@
         style="@style/theme_cardview_style"
         android:layout_marginTop="20dp"
         app:cardCornerRadius="6dp"
-        app:cardElevation="20dp">
+        app:cardElevation="6dp">
 
         <TextView
             style="@style/theme_text_style"
             android:background="@color/skin_default"
-            android:text="活力黄"/>
+            android:text="天然绿"/>
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
         android:id="@+id/card_blue"
         style="@style/theme_cardview_style"
         app:cardCornerRadius="6dp"
-        app:cardElevation="20dp">
+        app:cardElevation="6dp">
 
         <TextView
             style="@style/theme_text_style"
             android:background="@color/skin_blue"
-            android:text="活力黄"/>
+            android:text="宁静蓝"/>
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
         android:id="@+id/card_yellow"
         style="@style/theme_cardview_style"
         app:cardCornerRadius="6dp"
-        app:cardElevation="20dp">
+        app:cardElevation="6dp">
 
         <TextView
             style="@style/theme_text_style"
@@ -49,12 +49,12 @@
         android:id="@+id/card_pick"
         style="@style/theme_cardview_style"
         app:cardCornerRadius="6dp"
-        app:cardElevation="20dp">
+        app:cardElevation="6dp">
 
         <TextView
             style="@style/theme_text_style"
             android:background="@color/skin_pick"
-            android:text="活力黄"/>
+            android:text="温暖粉"/>
     </android.support.v7.widget.CardView>
 
 
@@ -62,22 +62,22 @@
         android:id="@+id/card_purple"
         style="@style/theme_cardview_style"
         app:cardCornerRadius="6dp"
-        app:cardElevation="20dp">
+        app:cardElevation="6dp">
 
         <TextView
             style="@style/theme_text_style"
             android:background="@color/skin_purple"
-            android:text="活力黄"/>
+            android:text="神秘紫"/>
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
         android:id="@+id/card_red"
         style="@style/theme_cardview_style"
         app:cardCornerRadius="6dp"
-        app:cardElevation="20dp">
+        app:cardElevation="6dp">
 
         <TextView
             style="@style/theme_text_style"
-            android:text="活力黄"/>
+            android:text="热情红"/>
     </android.support.v7.widget.CardView>
 </LinearLayout>
