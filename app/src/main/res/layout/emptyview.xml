@@ -3,7 +3,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-
     <TextView
         android:id="@+id/tv_empty"
         android:layout_width="match_parent"
@@ -11,7 +10,7 @@
         android:layout_centerInParent="true"
         android:gravity="center"
         android:padding="12dp"
-        android:text="木有数据"
+        android:text="啥都没找到"
         android:textColor="@color/secondary_text"
         android:textSize="18sp"/>
 
@@ -21,5 +20,5 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_above="@id/tv_empty"
-        android:background="@drawable/emptyimg"/>
+        android:background="@drawable/notfound"/>
 </RelativeLayout>

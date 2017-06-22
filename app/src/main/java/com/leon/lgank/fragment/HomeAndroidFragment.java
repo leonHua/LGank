@@ -7,7 +7,6 @@ import com.leon.lgank.adapter.HomeRecyclerviewAdapter;
 import com.leon.lgank.adapter.HomeRecyclerviewAdapter.OnBaseClickListener;
 import com.leon.lgank.common.Constant;
 import com.leon.lgank.model.GankModel;
-import com.leon.lgank.model.SaveModel;
 import com.leon.lgank.ui.DetailActivity;
 
 /**
@@ -37,9 +36,9 @@ public class HomeAndroidFragment extends BaseHomeFragment {
                 if (entity.getImages() != null && entity.getImages().size() > 0) {
                     iamges = entity.getImages().get(0);
                 }
-                SaveModel saveModel = new SaveModel(entity.get_id(), entity.getCreatedAt(), entity.getDesc(), entity.getPublishedAt(), entity.getSource(), entity.getType(), entity.getUrl(), entity.getUsed(), entity.getWho(), iamges);
-                intent.putExtra("entity", saveModel);
-                intent.putExtra("url", entity.getUrl());
+                //intent.putExtra("_id", entity.get_id());
+                //intent.putExtra("url", entity.getUrl());
+                intent.putExtra("entity",entity);
                 startActivity(intent);
             }
 

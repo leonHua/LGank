@@ -39,7 +39,10 @@
         <activity
             android:name=".ui.ThemeActivity"
             android:theme="@style/BaseTheme">
-
+        </activity>
+        <activity
+            android:name=".ui.CollectionActivity"
+            android:theme="@style/BaseTheme">
         </activity>
     </application>
 

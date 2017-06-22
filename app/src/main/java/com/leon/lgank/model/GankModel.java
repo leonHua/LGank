@@ -1,5 +1,6 @@
 package com.leon.lgank.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -34,7 +35,22 @@ public class GankModel {
         return results;
     }
 
-    public static class ResultsEntity{
+    public static class ResultsEntity implements Serializable{
+        public ResultsEntity() {
+        }
+
+        public ResultsEntity(String _id, String createdAt, String desc, String publishedAt, String source, String type, String url, boolean used, String who, List<String> images) {
+            this._id = _id;
+            this.createdAt = createdAt;
+            this.desc = desc;
+            this.publishedAt = publishedAt;
+            this.source = source;
+            this.type = type;
+            this.url = url;
+            this.used = used;
+            this.who = who;
+            this.images = images;
+        }
 
         private String _id;
         private String createdAt;

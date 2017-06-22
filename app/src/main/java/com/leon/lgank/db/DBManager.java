@@ -36,13 +36,10 @@ public class DBManager {
      */
     public static void cancelSave(final SaveModel entity) {
         Realm realm = Realm.getDefaultInstance();
-        realm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                SaveModel resultsEntity = realm.where(SaveModel.class).equalTo("_id", entity.get_id()).findFirst();
-                resultsEntity.deleteFromRealm();
-            }
-        });
+        realm.beginTransaction();
+        SaveModel resultsEntity = realm.where(SaveModel.class).equalTo("_id", entity.get_id()).findFirst();
+        resultsEntity.deleteFromRealm();
+        realm.commitTransaction();
     }
 
     /**
@@ -56,5 +53,18 @@ public class DBManager {
         RealmResults<SaveModel> results = realm.where(SaveModel.class).findAll();
         realm.commitTransaction();
         return results;
+    }
+
+    /**
+     * 根据主键查询某条记录
+     *
+     * @return
+     */
+    public static SaveModel queryModel(String _id) {
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        SaveModel result = realm.where(SaveModel.class).equalTo("_id", _id).findFirst();
+        realm.commitTransaction();
+        return result;
     }
 }

@@ -8,11 +8,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.leon.lgank.R;
+import com.leon.lgank.ui.CollectionActivity;
 import com.leon.lgank.ui.DetailActivity;
 import com.leon.lib.settingview.LSettingItem;
 
@@ -72,7 +72,7 @@ public class MeFragment extends Fragment {
         mSettingItemSave.setmOnLSettingItemClick(new LSettingItem.OnLSettingItemClick() {
             @Override
             public void click() {
-
+                startActivity(new Intent(mActivity, CollectionActivity.class));
             }
         });
     }

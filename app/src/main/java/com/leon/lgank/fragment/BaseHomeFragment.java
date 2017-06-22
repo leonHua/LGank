@@ -26,7 +26,6 @@ import com.leon.lgank.net.Api;
 import com.leon.lgank.net.HttpManager;
 import com.leon.lgank.ui.PicActivity;
 import com.leon.lgank.widget.EmptyRecyclerView;
-import com.orhanobut.logger.Logger;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
@@ -36,6 +35,8 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+
+import static com.blankj.utilcode.util.NetworkUtils.isConnected;
 
 /**
  * 作者：Leon
@@ -83,7 +84,7 @@ public abstract class BaseHomeFragment extends Fragment {
         mRecyclerView.hideEmptyView();
         initListener(mHomeRecyclerviewAdapter);
 
-        if (NetworkUtils.isAvailableByPing()) {
+        if (isConnected()) {
             startLoading();
             getDataFromServer(Constant.GET_DATA_TYPE_NOMAL);
         }
@@ -109,8 +110,7 @@ public abstract class BaseHomeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Logger.i("fragment_onResume");
-        if (!NetworkUtils.isAvailableByPing()) {
+        if (!NetworkUtils.isConnected()) {
             mTvNoNetwork.setVisibility(View.VISIBLE);
             mRefreshLayout.setEnabled(false);
         } else {

@@ -3,6 +3,7 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/gray"
                 android:orientation="vertical">
 
     <TextView
@@ -43,14 +44,14 @@
                 android:id="@+id/layout_loadmore"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="6dp"
                 android:layout_marginTop="6dp"
-                android:visibility="gone"
+                android:gravity="center_horizontal"
                 android:orientation="horizontal"
-                android:padding="12dp">
+                android:padding="12dp"
+                android:visibility="gone">
 
                 <com.wang.avi.AVLoadingIndicatorView
                     android:id="@+id/avi_loadmore"
@@ -61,9 +62,9 @@
                     app:indicatorName="LineScalePartyIndicator"/>
 
                 <TextView
-                    android:layout_marginLeft="6dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
                     android:gravity="center"
                     android:text="加载更多"
                     android:textColor="@color/secondary_text"

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/gray"
+    android:layout_height="match_parent"
+    tools:context="com.leon.lgank.ui.CollectionActivity">
+
+    <com.leon.lgank.widget.EmptyRecyclerView
+        android:id="@+id/recyclerview_collection"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.leon.lgank.widget.EmptyRecyclerView>
+    <include
+        android:id="@+id/empty_view"
+        layout="@layout/emptyview"/>
+
+</RelativeLayout>

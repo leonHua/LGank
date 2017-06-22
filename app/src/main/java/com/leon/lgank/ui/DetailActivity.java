@@ -14,21 +14,30 @@ import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.leon.lgank.R;
 import com.leon.lgank.db.DBManager;
+import com.leon.lgank.model.GankModel;
 import com.leon.lgank.model.SaveModel;
 
 public class DetailActivity extends BaseActivity {
     private View mView;
     private WebView mWebView;
     private String mUrl;
-    private boolean mIsSave = false;
-    private SaveModel mEntity;
-
+    private GankModel.ResultsEntity mEntity;
+    private SaveModel mSaveModel;
+    private String mId;
 
     @Override
     protected void initOperation(Intent intent) {
         startLoading();
-        mUrl = intent.getStringExtra("url");
-        mEntity = (SaveModel) intent.getSerializableExtra("entity");
+        mEntity = (GankModel.ResultsEntity) intent.getSerializableExtra("entity");
+        mUrl = mEntity.getUrl();
+        mSaveModel = DBManager.queryModel(mEntity.get_id());
+        if (mSaveModel == null) {
+            String imageTemp = "";
+            if (mEntity.getImages() != null && mEntity.getImages().size() > 0) {
+                imageTemp = mEntity.getImages().get(0);
+            }
+            mSaveModel = new SaveModel(mEntity.get_id(), mEntity.getCreatedAt(), mEntity.getDesc(), mEntity.getPublishedAt(), mEntity.getSource(), mEntity.getType(), mEntity.getUrl(), mEntity.getUsed(), mEntity.getWho(), imageTemp, false);
+        }
         mWebView = (WebView) mView.findViewById(R.id.webview);
         if (StringUtils.isEmpty(mUrl)) {
             ToastUtils.showShort("地址加载失败，请稍后再试");
@@ -44,7 +53,6 @@ public class DetailActivity extends BaseActivity {
         mView = View.inflate(this, R.layout.activity_detail, null);
         return mView;
     }
-
 
     @Override
     protected String setToolbarTitle() {
@@ -124,17 +132,17 @@ public class DetailActivity extends BaseActivity {
                 startShareIntent("text/plain", "分享一篇实用文章：" + mUrl);
                 break;
             case R.id.action_save:
-                mIsSave = mIsSave ? false : true;
-                if (mIsSave) {
-                    DBManager.save(mEntity);
+                if (!mSaveModel.isCollection()) {
+                    mSaveModel.setCollection(true);
+                    DBManager.save(mSaveModel);
                     ToastUtils.showShortSafe("收藏成功");
                     item.setIcon(R.mipmap.menu_action_save_choosen);
-                    ToastUtils.showShortSafe("数量：" + DBManager.getAllData().size());
+                    //oastUtils.showShortSafe("数量：" + DBManager.getAllData().size());
                 } else {
                     ToastUtils.showShortSafe("取消收藏");
-                    DBManager.cancelSave(mEntity);
+                    DBManager.cancelSave(mSaveModel);
                     item.setIcon(R.mipmap.menu_action_save);
-                    ToastUtils.showShortSafe("数量：" + DBManager.getAllData().size());
+                    //ToastUtils.showShortSafe("数量：" + DBManager.getAllData().size());
                 }
 
                 break;
@@ -145,6 +153,11 @@ public class DetailActivity extends BaseActivity {
     @Override
     protected void updateOptionsMenu(Menu menu) {
         menu.findItem(R.id.action_download).setVisible(false);
+        if (mSaveModel.isCollection()) {
+            menu.findItem(R.id.action_save).setIcon(R.mipmap.menu_action_save_choosen);
+        } else {
+            menu.findItem(R.id.action_save).setIcon(R.mipmap.menu_action_save);
+        }
     }
 
     @Override

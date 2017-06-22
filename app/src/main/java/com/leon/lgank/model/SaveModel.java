@@ -3,6 +3,7 @@ package com.leon.lgank.model;
 import java.io.Serializable;
 
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * 作者：Leon
@@ -14,7 +15,7 @@ public class SaveModel extends RealmObject implements Serializable {
 
     }
 
-    public SaveModel(String _id, String createdAt, String desc, String publishedAt, String source, String type, String url, boolean used, String who, String images) {
+    public SaveModel(String _id, String createdAt, String desc, String publishedAt, String source, String type, String url, boolean used, String who, String images,boolean collection) {
         this._id = _id;
         this.createdAt = createdAt;
         this.desc = desc;
@@ -25,8 +26,10 @@ public class SaveModel extends RealmObject implements Serializable {
         this.used = used;
         this.who = who;
         this.images = images;
+        this.collection = collection;
     }
 
+    @PrimaryKey
     private String _id;
     private String createdAt;
     private String desc;
@@ -37,6 +40,7 @@ public class SaveModel extends RealmObject implements Serializable {
     private boolean used;
     private String who;
     private String images;
+    private boolean collection;
 
     public void set_id(String _id) {
         this._id = _id;
@@ -118,5 +122,13 @@ public class SaveModel extends RealmObject implements Serializable {
 
     public void setImages(String images) {
         this.images = images;
+    }
+
+    public boolean isCollection() {
+        return collection;
+    }
+
+    public void setCollection(boolean collection) {
+        this.collection = collection;
     }
 }
