@@ -34,19 +34,7 @@ public class GankModel {
         return results;
     }
 
-    public static class ResultsEntity {
-        /**
-         * _id : 592b8466421aa92c7be61b6b
-         * createdAt : 2017-05-29T10:16:06.620Z
-         * desc : 给初学者的RxJava2.0教程(六)：治理Backpressure
-         * images : ["http://img.gank.io/56aca21b-3f5c-46fb-82d0-023e0c39010c"]
-         * publishedAt : 2017-06-08T11:27:47.21Z
-         * source : web
-         * type : Android
-         * url : https://mp.weixin.qq.com/s?__biz=MzIwMzYwMTk1NA==&mid=2247484689&idx=1&sn=1f54c343c6a5d73c63b4cdb555bdf254&chksm=96cda45ca1ba2d4af7e0e51454283f86d145a19b613a1fc149e4d46d22e277c150d2910e95b6#rd
-         * used : true
-         * who : 陈宇明
-         */
+    public static class ResultsEntity{
 
         private String _id;
         private String createdAt;

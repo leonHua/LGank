@@ -13,18 +13,22 @@ import android.webkit.WebViewClient;
 import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.leon.lgank.R;
+import com.leon.lgank.db.DBManager;
+import com.leon.lgank.model.SaveModel;
 
 public class DetailActivity extends BaseActivity {
     private View mView;
     private WebView mWebView;
     private String mUrl;
     private boolean mIsSave = false;
+    private SaveModel mEntity;
 
 
     @Override
     protected void initOperation(Intent intent) {
         startLoading();
         mUrl = intent.getStringExtra("url");
+        mEntity = (SaveModel) intent.getSerializableExtra("entity");
         mWebView = (WebView) mView.findViewById(R.id.webview);
         if (StringUtils.isEmpty(mUrl)) {
             ToastUtils.showShort("地址加载失败，请稍后再试");
@@ -122,11 +126,15 @@ public class DetailActivity extends BaseActivity {
             case R.id.action_save:
                 mIsSave = mIsSave ? false : true;
                 if (mIsSave) {
+                    DBManager.save(mEntity);
                     ToastUtils.showShortSafe("收藏成功");
                     item.setIcon(R.mipmap.menu_action_save_choosen);
+                    ToastUtils.showShortSafe("数量：" + DBManager.getAllData().size());
                 } else {
                     ToastUtils.showShortSafe("取消收藏");
+                    DBManager.cancelSave(mEntity);
                     item.setIcon(R.mipmap.menu_action_save);
+                    ToastUtils.showShortSafe("数量：" + DBManager.getAllData().size());
                 }
 
                 break;
