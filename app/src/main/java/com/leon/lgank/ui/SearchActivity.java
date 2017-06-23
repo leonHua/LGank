@@ -1,7 +1,11 @@
 package com.leon.lgank.ui;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -41,9 +45,18 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import skin.support.SkinCompatManager;
+import skin.support.app.SkinCompatDelegate;
+import skin.support.content.res.SkinCompatResources;
+import skin.support.observe.SkinObservable;
+import skin.support.observe.SkinObserver;
+import skin.support.widget.SkinCompatThemeUtils;
+
+import static skin.support.widget.SkinCompatHelper.INVALID_ID;
+import static skin.support.widget.SkinCompatHelper.checkResourceId;
 
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity implements SkinObserver {
     private FlexboxLayout mFlexboxLayout;
     private PreferenceImpl mPreUtils;
     private EmptyRecyclerView mRecyclerViewHistory;
@@ -66,11 +79,13 @@ public class SearchActivity extends AppCompatActivity {
     private String mKeywords;//搜索关键字
     private EditText mEtSearch;
     private TextView mTvSearch;
-
+    private SkinCompatDelegate mSkinDelegate;//换肤实现
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        updateStatusBarColor();
+        updateWindowBackground();
         SwipeBackHelper.onCreate(this);
         initView();
         mPreUtils = (PreferenceImpl) IPreference.prefHolder.getPreference(this, HISTORY_SEARCH);
@@ -87,7 +102,12 @@ public class SearchActivity extends AppCompatActivity {
         mHistorySearchAdapter.setmOnMyClickListener(new HistorySearchAdapter.OnClickListener() {
             @Override
             public void onClick(int position) {
-                ToastUtils.showShort("position " + position);
+                mKeywords = mHistoryTitles.get(position);
+                mEtSearch.setText(mKeywords);
+                showSearchResult(true);
+                startLoading();
+                getDataFromServer(mKeywords, Constant.GET_DATA_TYPE_NOMAL);
+
             }
         });
         mHomeRecyclerviewAdapter = new HomeRecyclerviewAdapter(this, mList, Constant.ITEM_TYPE_TEXT);
@@ -324,6 +344,7 @@ public class SearchActivity extends AppCompatActivity {
         if (mDisposable != null && !mDisposable.isDisposed()) {
             mDisposable.dispose();
         }
+        SkinCompatManager.getInstance().deleteObserver(this);
     }
 
     /**
@@ -335,6 +356,63 @@ public class SearchActivity extends AppCompatActivity {
         mListPicUrls = (ArrayList) entity.getImages();
         intent.putStringArrayListExtra("piclist", mListPicUrls);
         startActivity(intent);
+    }
+    @NonNull
+    public SkinCompatDelegate getSkinDelegate() {
+        if (mSkinDelegate == null) {
+            mSkinDelegate = SkinCompatDelegate.create(this);
+        }
+        return mSkinDelegate;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SkinCompatManager.getInstance().addObserver(this);
+    }
+
+
+    /**
+     * @return true: 打开5.0以上状态栏换肤, false: 关闭5.0以上状态栏换肤;
+     */
+    protected boolean skinStatusBarColorEnable() {
+        return true;
+    }
+
+    protected void updateStatusBarColor() {
+        if (skinStatusBarColorEnable() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            int statusBarColorResId = SkinCompatThemeUtils.getStatusBarColorResId(this);
+            int colorPrimaryDarkResId = SkinCompatThemeUtils.getColorPrimaryDarkResId(this);
+            if (checkResourceId(statusBarColorResId) != INVALID_ID) {
+                getWindow().setStatusBarColor(SkinCompatResources.getInstance().getColor(statusBarColorResId));
+            } else if (checkResourceId(colorPrimaryDarkResId) != INVALID_ID) {
+                getWindow().setStatusBarColor(SkinCompatResources.getInstance().getColor(colorPrimaryDarkResId));
+            }
+        }
+    }
+
+    protected void updateWindowBackground() {
+        int windowBackgroundResId = SkinCompatThemeUtils.getWindowBackgroundResId(this);
+        if (checkResourceId(windowBackgroundResId) != INVALID_ID) {
+            String typeName = getResources().getResourceTypeName(windowBackgroundResId);
+            if ("color".equals(typeName)) {
+                Drawable drawable = new ColorDrawable(SkinCompatResources.getInstance().getColor(windowBackgroundResId));
+                getWindow().setBackgroundDrawable(drawable);
+            } else if ("drawable".equals(typeName)) {
+                Drawable drawable = SkinCompatResources.getInstance().getDrawable(windowBackgroundResId);
+                getWindow().setBackgroundDrawable(drawable);
+            } else if ("mipmap".equals(typeName)) {
+                Drawable drawable = SkinCompatResources.getInstance().getMipmap(windowBackgroundResId);
+                getWindow().setBackgroundDrawable(drawable);
+            }
+        }
+    }
+
+    @Override
+    public void updateSkin(SkinObservable observable, Object o) {
+        updateStatusBarColor();
+        updateWindowBackground();
+        getSkinDelegate().applySkin();
     }
 
     /**
