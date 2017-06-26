@@ -9,6 +9,11 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/skinblue" />
+            <option value="$PROJECT_DIR$/skinpick" />
+            <option value="$PROJECT_DIR$/skinpurple" />
+            <option value="$PROJECT_DIR$/skinred" />
+            <option value="$PROJECT_DIR$/skinyellow" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

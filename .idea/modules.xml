@@ -4,6 +4,11 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/LGank.iml" filepath="$PROJECT_DIR$/LGank.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/skinblue/skinblue.iml" filepath="$PROJECT_DIR$/skinblue/skinblue.iml" />
+      <module fileurl="file://$PROJECT_DIR$/skinpick/skinpick.iml" filepath="$PROJECT_DIR$/skinpick/skinpick.iml" />
+      <module fileurl="file://$PROJECT_DIR$/skinpurple/skinpurple.iml" filepath="$PROJECT_DIR$/skinpurple/skinpurple.iml" />
+      <module fileurl="file://$PROJECT_DIR$/skinred/skinred.iml" filepath="$PROJECT_DIR$/skinred/skinred.iml" />
+      <module fileurl="file://$PROJECT_DIR$/skinyellow/skinyellow.iml" filepath="$PROJECT_DIR$/skinyellow/skinyellow.iml" />
     </modules>
   </component>
 </project>
