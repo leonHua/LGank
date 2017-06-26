@@ -1,10 +1,12 @@
 package com.leon.lgank.net;
 
 import com.leon.lgank.model.GankModel;
+import com.leon.lgank.model.TianModel;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * 作者：Leon
@@ -30,5 +32,11 @@ public interface Api {
     @GET("search/query/{searchkey}/category/all/count/10/page/{page}")
     Observable<GankModel> getSearchData(@Path("searchkey") String searchkey,
                                         @Path("page") int page);
+
+    @GET("mobile/")
+    Observable<TianModel> getReadData(@Query("key") String key,
+                                      @Query("num") int num,
+                                      @Query("page") int page);
+
 
 }

@@ -32,12 +32,6 @@ public class HomeAndroidFragment extends BaseHomeFragment {
             @Override
             public void onClick(int position, GankModel.ResultsEntity entity) {
                 Intent intent = new Intent(mContext, DetailActivity.class);
-                String iamges = "";
-                if (entity.getImages() != null && entity.getImages().size() > 0) {
-                    iamges = entity.getImages().get(0);
-                }
-                //intent.putExtra("_id", entity.get_id());
-                //intent.putExtra("url", entity.getUrl());
                 intent.putExtra("entity",entity);
                 startActivity(intent);
             }

@@ -46,4 +46,23 @@ public class HttpManager {
         Api api = retrofit.create(Api.class);
         return api;
     }
+
+    /**
+     * 获取对应的接口服务
+     *
+     * @return Api
+     */
+    public Api getApiService(String baseUrl) {
+        OkHttpClient.Builder builder = new OkHttpClient().newBuilder();
+        builder.readTimeout(15, TimeUnit.SECONDS);
+        builder.connectTimeout(10, TimeUnit.SECONDS);
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .client(builder.build())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create()).build();
+        Api api = retrofit.create(Api.class);
+        return api;
+    }
 }

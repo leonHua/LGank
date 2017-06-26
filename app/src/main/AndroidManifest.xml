@@ -44,6 +44,10 @@
             android:name=".ui.CollectionActivity"
             android:theme="@style/BaseTheme">
         </activity>
+        <activity
+            android:name=".ui.ReadDetailActivity"
+            android:theme="@style/BaseTheme">
+        </activity>
     </application>
 
 </manifest>
