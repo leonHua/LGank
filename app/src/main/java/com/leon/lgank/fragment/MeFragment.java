@@ -52,6 +52,7 @@ public class MeFragment extends Fragment {
             public void click() {
                 Intent intent = new Intent(mActivity, DetailActivity.class);
                 intent.putExtra("url", "https://leonhua.github.io/");
+                intent.putExtra("isfromme",true);
                 startActivity(intent);
             }
         });
@@ -66,6 +67,7 @@ public class MeFragment extends Fragment {
             public void click() {
                 Intent intent = new Intent(mActivity, DetailActivity.class);
                 intent.putExtra("url", "https://github.com/leonHua");
+                intent.putExtra("isfromme",true);
                 startActivity(intent);
             }
         });

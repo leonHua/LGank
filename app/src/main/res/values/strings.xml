@@ -8,5 +8,6 @@
     <string name="menu_draw_app">APP</string>
     <string name="menu_draw_recommend">瞎推荐</string>
     <string name="menu_draw_video">休息视频</string>
+    <string name="menu_draw_expandresource">拓展资源</string>
     <string name="menu_draw_theme">主题切换</string>
 </resources>

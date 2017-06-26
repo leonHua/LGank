@@ -24,14 +24,16 @@ public class DetailActivity extends BaseActivity {
     private GankModel.ResultsEntity mEntity;
     private SaveModel mSaveModel;
     private String mId;
+    private boolean mIsFromMe = false;
 
     @Override
     protected void initOperation(Intent intent) {
         startLoading();
         mEntity = (GankModel.ResultsEntity) intent.getSerializableExtra("entity");
-        mUrl = mEntity.getUrl();
-        mSaveModel = DBManager.queryModel(mEntity.get_id());
-        if (mSaveModel == null) {
+        mIsFromMe = intent.getBooleanExtra("isfromme", false);
+        if (mIsFromMe) {
+            mUrl = intent.getStringExtra("url");
+        } else {
             String imageTemp = "";
             if (mEntity.getImages() != null && mEntity.getImages().size() > 0) {
                 imageTemp = mEntity.getImages().get(0);
@@ -153,10 +155,13 @@ public class DetailActivity extends BaseActivity {
     @Override
     protected void updateOptionsMenu(Menu menu) {
         menu.findItem(R.id.action_download).setVisible(false);
-        if (mSaveModel.isCollection()) {
-            menu.findItem(R.id.action_save).setIcon(R.mipmap.menu_action_save_choosen);
-        } else {
-            menu.findItem(R.id.action_save).setIcon(R.mipmap.menu_action_save);
+        menu.findItem(R.id.action_save).setVisible(!mIsFromMe);
+        if (!mIsFromMe) {
+            if (mSaveModel.isCollection()) {
+                menu.findItem(R.id.action_save).setIcon(R.mipmap.menu_action_save_choosen);
+            } else {
+                menu.findItem(R.id.action_save).setIcon(R.mipmap.menu_action_save);
+            }
         }
     }
 

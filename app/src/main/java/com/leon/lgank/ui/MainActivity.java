@@ -178,6 +178,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 categroy = Constant.CATEGORY_APP;
                 showCategoryInfo(categroy);
                 break;
+            case R.id.menu_draw_expandresource:
+                categroy = Constant.CATEGORY_EXPANDRESOURCE;
+                showCategoryInfo(categroy);
+                break;
             case R.id.menu_draw_video:
                 categroy = Constant.CATEGORY_VIDEO;
                 showCategoryInfo(categroy);

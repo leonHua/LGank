@@ -14,6 +14,11 @@
         android:id="@+id/menu_draw_app"
         android:icon="@mipmap/app"
         android:title="@string/menu_draw_app"/>
+
+    <item
+        android:id="@+id/menu_draw_expandresource"
+        android:icon="@mipmap/drawer_icon_resource"
+        android:title="@string/menu_draw_expandresource"/>
     <item
         android:id="@+id/menu_draw_video"
         android:icon="@mipmap/drawer_icon_video"
@@ -21,6 +26,6 @@
 
     <item
         android:id="@+id/menu_draw_theme"
-        android:icon="@mipmap/drawer_icon_video"
+        android:icon="@mipmap/drawer_icon_theme"
         android:title="@string/menu_draw_theme"/>
 </menu>

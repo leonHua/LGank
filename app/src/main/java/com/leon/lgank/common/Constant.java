@@ -3,11 +3,12 @@ package com.leon.lgank.common;
 /**
  * 作者：Leon
  * 时间：2017/6/7
- * 描述: 静态资源类
+ * 描述: 公共资源类
  */
 public class Constant {
 
     public static String BASE_URL = "http://gank.io/api/";
+    public static String BASE_URL_READ = "http://api.tianapi.com/";
     public static String CATEGORY_ANDROID = "Android";
     public static String CATEGORY_IOS = "iOS";
     public static String CATEGORY_GIRL = "福利";
