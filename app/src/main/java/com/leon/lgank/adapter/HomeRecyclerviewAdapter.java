@@ -1,6 +1,7 @@
 package com.leon.lgank.adapter;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.leon.lgank.common.Utils;
 import com.leon.lgank.image.ImageManager;
 import com.leon.lgank.model.GankModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,7 +29,9 @@ public class HomeRecyclerviewAdapter extends RecyclerView.Adapter<HomeRecyclervi
     private Context mContext;
     private List<GankModel.ResultsEntity> mListData;
     private int mItemType;//条目布局类型
+    private boolean mIsStaggered = false;
     private OnBaseClickListener mBaseClickListener;
+    private List<Integer> mHeights = new ArrayList<Integer>();
 
     public interface OnBaseClickListener {
         void onClick(int position, GankModel.ResultsEntity entity);
@@ -71,13 +75,26 @@ public class HomeRecyclerviewAdapter extends RecyclerView.Adapter<HomeRecyclervi
                 public void onClick(View v) {
                     if (resultsEntity.getImages() != null && resultsEntity.getImages().size() > 0) {
                         mBaseClickListener.onCoverClick(position, resultsEntity);
-                    }else{
+                    } else {
                         ToastUtils.showShortSafe("木有发现图片哟");
                     }
                 }
             });
         } else {
+            //福利界面
+            if (mIsStaggered) {
+                //瀑布流模式
+                //随机高度，为了达到瀑布流效果
+                if (mHeights.size() <= position) {
+                    mHeights.add((int) (Math.random() * 300 + 500));
+                }
+                //设置每个条目的高度，高度是随机的
+                ViewGroup.LayoutParams lp = holder.cardView.getLayoutParams();
+                lp.height = mHeights.get(position);
+                holder.cardView.setLayoutParams(lp);
+            }
             ImageManager.getInstance().loadImage(mContext, resultsEntity.getUrl(), holder.ivGirl);
+
         }
         holder.rootView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +107,10 @@ public class HomeRecyclerviewAdapter extends RecyclerView.Adapter<HomeRecyclervi
     @Override
     public int getItemCount() {
         return mListData.size();
+    }
+
+    public void setmIsStaggered(boolean mIsStaggered) {
+        this.mIsStaggered = mIsStaggered;
     }
 
     public void setmListData(List<GankModel.ResultsEntity> mListData) {
@@ -108,6 +129,7 @@ public class HomeRecyclerviewAdapter extends RecyclerView.Adapter<HomeRecyclervi
         TextView tvTime;
         ImageView ivCover;//封面缩率图
         ImageView ivGirl;
+        CardView cardView;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -117,6 +139,7 @@ public class HomeRecyclerviewAdapter extends RecyclerView.Adapter<HomeRecyclervi
             tvTime = (TextView) itemView.findViewById(R.id.tv_time);
             ivCover = (ImageView) itemView.findViewById(R.id.iv_cover);
             ivGirl = (ImageView) itemView.findViewById(R.id.iv_girl);
+            cardView = (CardView) itemView.findViewById(R.id.cardview);
         }
     }
 }

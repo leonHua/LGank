@@ -46,8 +46,8 @@ import static com.blankj.utilcode.util.NetworkUtils.isConnected;
 public abstract class BaseHomeFragment extends Fragment {
     public Context mContext;
     public View mRootView;
-    private EmptyRecyclerView mRecyclerView;
-    private HomeRecyclerviewAdapter mHomeRecyclerviewAdapter;
+    protected EmptyRecyclerView mRecyclerView;
+    protected HomeRecyclerviewAdapter mHomeRecyclerviewAdapter;
     private Disposable mDisposable;
     protected List<GankModel.ResultsEntity> mList = new ArrayList<>();
     private TextView mTvNoNetwork;
@@ -83,11 +83,19 @@ public abstract class BaseHomeFragment extends Fragment {
         mRecyclerView.setmEmptyView(mEmptyView);
         mRecyclerView.hideEmptyView();
         initListener(mHomeRecyclerviewAdapter);
+        initOperation(mRootView);
 
         if (isConnected()) {
             startLoading();
             getDataFromServer(Constant.GET_DATA_TYPE_NOMAL);
         }
+    }
+
+    /**
+     * 子类可以自由自己的业务
+     */
+    protected void initOperation(View mRootView) {
+
     }
 
     /**
@@ -296,6 +304,7 @@ public abstract class BaseHomeFragment extends Fragment {
             int lastPosition = -1;
             //当前状态为停止滑动状态SCROLL_STATE_IDLE时
             if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                stopScrolling();
                 RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
                 //分别判断三种类型
                 if (layoutManager instanceof GridLayoutManager) {
@@ -318,8 +327,23 @@ public abstract class BaseHomeFragment extends Fragment {
                     startLoadingMore();
                     getDataFromServer(Constant.GET_DATA_TYPE_LOADMORE);
                 }
+            } else {
+                //滑动中，子类可以选择实现一些自己的处理
+                startScrolling();
             }
         }
+    }
+
+    /**
+     * 列表滑动停止，子类可以选择实现一些自己的处理
+     */
+    protected void stopScrolling() {
+    }
+
+    /**
+     * 列表滑动中，子类可以选择实现一些自己的处理
+     */
+    protected void startScrolling() {
     }
 
     private int findMax(int[] lastPositions) {
