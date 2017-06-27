@@ -22,5 +22,7 @@
     <color name="skin_purple">#9579BB</color>
     <color name="skin_red">#FC6453</color>
 
+    <color name="black_overlay">#66000000</color>
+
 
 </resources>

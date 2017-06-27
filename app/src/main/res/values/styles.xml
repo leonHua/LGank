@@ -61,4 +61,10 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="GuideTheme" parent="AppTheme">
+        <!-- 隐藏状态栏 -->
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
 </resources>

@@ -10,4 +10,8 @@
     <string name="menu_draw_video">休息视频</string>
     <string name="menu_draw_expandresource">拓展资源</string>
     <string name="menu_draw_theme">主题切换</string>
+
+    <string name="title_activity_guide">GuideActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

@@ -11,6 +11,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -25,6 +26,9 @@ dependencies {
     compile files('libs/glide-3.8.0.jar')
     compile files('libs/gson-2.7.jar')
     compile files('libs/converter-gson-2.3.0.jar')
+    compile('com.alibaba.android:ultraviewpager:1.0.4@aar') {
+        transitive = true
+    }
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
@@ -46,4 +50,5 @@ dependencies {
     compile 'skin.support:skin-support:1.2.7'
     compile 'skin.support:skin-support-design:1.2.4'
     compile 'com.github.rubensousa:gravitysnaphelper:1.2'
+    compile 'jp.wasabeef:glide-transformations:2.0.2'
 }
