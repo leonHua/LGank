@@ -125,7 +125,7 @@
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/menu_item_linearlayout"
             style="@style/floatactionbutton_style"
-            android:src="@mipmap/icon_floataction"
+            android:src="@mipmap/floataction_list"
             android:clickable="true"
             fab:fab_colorNormal="?attr/colorPrimary"
             fab:fab_colorPressed="?attr/colorPrimary"
@@ -136,7 +136,7 @@
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/menu_item_gridlayout"
             style="@style/floatactionbutton_style"
-            android:src="@mipmap/icon_floataction"
+            android:src="@mipmap/floataction_grid"
             fab:fab_colorNormal="?attr/colorPrimary"
             fab:fab_colorPressed="?attr/colorPrimary"
             fab:fab_colorRipple="@color/gray"
@@ -146,7 +146,7 @@
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/menu_item_staggeredlayout"
             style="@style/floatactionbutton_style"
-            android:src="@mipmap/icon_floataction"
+            android:src="@mipmap/floataction_staggle"
             fab:fab_colorNormal="?attr/colorPrimary"
             fab:fab_colorPressed="?attr/colorPrimary"
             fab:fab_colorRipple="@color/gray"

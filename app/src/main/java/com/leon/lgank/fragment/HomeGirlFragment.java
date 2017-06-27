@@ -3,7 +3,9 @@ package com.leon.lgank.fragment;
 import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SnapHelper;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
@@ -100,6 +102,8 @@ public class HomeGirlFragment extends BaseHomeFragment implements View.OnClickLi
             case R.id.menu_item_linearlayout:
                 mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
                 mHomeRecyclerviewAdapter.setmIsStaggered(false);
+                SnapHelper snapHelper = new LinearSnapHelper();
+                snapHelper.attachToRecyclerView(mRecyclerView);
                 mActionMenu.close(true);
                 break;
             case R.id.menu_item_gridlayout:
