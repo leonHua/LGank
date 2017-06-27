@@ -3,7 +3,6 @@ package com.leon.lgank.fragment;
 import android.content.Intent;
 import android.view.View;
 
-import com.blankj.utilcode.util.ToastUtils;
 import com.leon.lgank.adapter.HomeRecyclerviewAdapter;
 import com.leon.lgank.common.Constant;
 import com.leon.lgank.model.GankModel;
@@ -31,7 +30,7 @@ public class HomeIOSFragment extends BaseHomeFragment {
             @Override
             public void onClick(int position ,GankModel.ResultsEntity entity) {
                 Intent intent = new Intent(mContext, DetailActivity.class);
-                intent.putExtra("url", entity.getUrl());
+                intent.putExtra("entity",entity);
                 startActivity(intent);
             }
 
