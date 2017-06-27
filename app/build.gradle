@@ -25,6 +25,7 @@ dependencies {
     compile files('libs/glide-3.8.0.jar')
     compile files('libs/gson-2.7.jar')
     compile files('libs/converter-gson-2.3.0.jar')
+    compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support:support-vector-drawable:25.3.1'
