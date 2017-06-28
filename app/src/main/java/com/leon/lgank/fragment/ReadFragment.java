@@ -36,6 +36,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
+import static com.blankj.utilcode.util.NetworkUtils.isConnected;
+
 /**
  * 作者：Leon
  * 时间：2017/6/6
@@ -77,10 +79,10 @@ public class ReadFragment extends Fragment {
         mEmptyRecyclerView.setAdapter(mReadAdapter);
         mEmptyRecyclerView.setmEmptyView(view.findViewById(R.id.empty_view));
         initListener();
-        //if (isConnected()) {
-        //    startLoading();
-        //    getDataFromServer(Constant.GET_DATA_TYPE_NOMAL);
-        //}
+        if (isConnected()) {
+            startLoading();
+            getDataFromServer(Constant.GET_DATA_TYPE_NOMAL);
+        }
     }
 
     private void initListener() {

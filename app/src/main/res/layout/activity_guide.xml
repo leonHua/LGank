@@ -1,8 +1,8 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="com.leon.lgank.ui.GuideActivity">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.leon.lgank.ui.GuideActivity">
 
     <ImageView
         android:id="@+id/image_guide"
@@ -10,5 +10,44 @@
         android:layout_height="match_parent"
         android:scaleType="fitXY"/>
 
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="3 s"
+        android:textColor="#88ffffff"
+        android:textSize="20sp"/>
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/image_icon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/guide_icon_center"/>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/image_icon"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:src="@drawable/guide_icon"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="dujinghua.cn"
+        android:textColor="#88ffffff"
+        android:textSize="14sp"/>
+
+</RelativeLayout>

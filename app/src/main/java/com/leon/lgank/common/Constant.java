@@ -9,7 +9,7 @@ public class Constant {
 
     public static String BASE_URL = "http://gank.io/api/";
     public static String BASE_URL_READ = "http://api.tianapi.com/";
-    public static final String APIKEY = "35528a661d218b44c420e10f3e520286";
+    public static final String APIKEY = "692622924e6ae9d170868b43dbb91956";
 
     public static String CATEGORY_ALL = "all";
     public static String CATEGORY_VIDEO = "休息视频";
