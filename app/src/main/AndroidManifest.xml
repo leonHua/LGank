@@ -46,7 +46,6 @@
         <activity
             android:name=".ui.GuideActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_guide"
             android:theme="@style/GuideTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

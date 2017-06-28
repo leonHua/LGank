@@ -34,7 +34,7 @@ public class ImageManager {
      * @param targetImageView 使用默认的占位等待图片和错误图片
      */
     public void loadImage(Context context, Object path, ImageView targetImageView) {
-        Glide.with(context).load(path).placeholder(R.drawable.placeholder).error(R.drawable.header).centerCrop().into(targetImageView);
+        Glide.with(context).load(path).placeholder(R.drawable.placeholder).error(R.drawable.notfound).centerCrop().into(targetImageView);
     }
 
     /**

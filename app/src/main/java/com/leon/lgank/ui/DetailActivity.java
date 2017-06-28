@@ -39,7 +39,14 @@ public class DetailActivity extends BaseActivity {
                 imageTemp = mEntity.getImages().get(0);
             }
             mUrl = mEntity.getUrl();
-            mSaveModel = new SaveModel(mEntity.get_id(), mEntity.getCreatedAt(), mEntity.getDesc(), mEntity.getPublishedAt(), mEntity.getSource(), mEntity.getType(), mEntity.getUrl(), mEntity.getUsed(), mEntity.getWho(), imageTemp, false);
+            mSaveModel = DBManager.queryModel(mEntity.get_id());
+            if (mSaveModel == null) {
+                mSaveModel = new SaveModel(mEntity.get_id(), mEntity.getCreatedAt(),
+                        mEntity.getDesc(), mEntity.getPublishedAt(), mEntity.getSource(),
+                        mEntity.getType(), mEntity.getUrl(), mEntity.getUsed(), mEntity.getWho(),
+                        imageTemp, false);
+            }
+
         }
         mWebView = (WebView) mView.findViewById(R.id.webview);
         if (StringUtils.isEmpty(mUrl)) {
