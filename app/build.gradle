@@ -49,6 +49,7 @@ dependencies {
     compile 'skin.support:skin-support:1.2.7'
     compile 'skin.support:skin-support-design:1.2.4'
     compile 'com.github.rubensousa:gravitysnaphelper:1.2'
-    compile "com.github.bumptech.glide:glide:3.8.0"
+    compile 'com.github.bumptech.glide:glide:3.8.0'
     compile 'jp.wasabeef:glide-transformations:2.0.2'
+    compile 'cn.pedant.sweetalert:library:1.3'
 }
