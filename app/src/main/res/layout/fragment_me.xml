@@ -28,6 +28,7 @@
                 app:civ_border_width="6dp"/>
 
             <TextView
+                android:id="@+id/tv_nickname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"

@@ -28,4 +28,9 @@ public class Constant {
     //列表条目布局类型 0：文字布局（Android ,iOS Fragement）  1：图片布局（福利 Fragement）
     public static final int ITEM_TYPE_TEXT = 0;
     public static final int ITEM_TYPE_IMAGE = 1;
+
+    //个人信息设置
+    public static final String NICKNAME ="leonHua";
+    public static final String BLOGURL ="https://leonhua.github.io/";
+    public static final String OTHERURL ="https://github.com/leonHua";
 }

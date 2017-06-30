@@ -7,4 +7,9 @@
         android:icon="@mipmap/menu_action_search_white"
         android:title="搜索"
         app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_edit"
+        android:icon="@mipmap/menu_action_edit_white"
+        android:title="编辑"
+        app:showAsAction="ifRoom"/>
 </menu>

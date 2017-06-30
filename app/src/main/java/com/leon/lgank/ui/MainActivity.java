@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout mDrawer;
     private NavigationView mNavigationView;//侧滑菜单
     private BottomNavigationView mBottomNavigation;//底部导航
+    private Menu mMenu;
 
 
     @Override
@@ -150,6 +151,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main_toolbar, menu);
+        menu.findItem(R.id.action_edit).setVisible(false);
+        mMenu = menu;
         return true;
     }
 
@@ -158,7 +161,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (item.getItemId() == R.id.action_search) {
             startActivity(new Intent(this, SearchActivity.class));
         }
+        if (item.getItemId() == R.id.action_edit) {
+            startActivity(new Intent(this, EditActivity.class));
+        }
         return true;
+    }
+
+    public void showEdit() {
+        mMenu.findItem(R.id.action_edit).setVisible(true);
     }
 
     /**
