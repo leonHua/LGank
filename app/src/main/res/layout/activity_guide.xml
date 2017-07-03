@@ -24,23 +24,9 @@
         android:textColor="#88ffffff"
         android:textSize="20sp"/>
 
-    <ImageView
-        android:id="@+id/image_icon"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_centerInParent="true"
-        android:scaleType="centerInside"
-        android:src="@drawable/guide_icon_center"/>
-
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_below="@id/image_icon"
-        android:layout_centerHorizontal="true"
-        android:padding="10dp"
-        android:src="@drawable/guide_icon"/>
 
     <TextView
+        android:id="@+id/tv_blog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -49,5 +35,13 @@
         android:text="dujinghua.cn"
         android:textColor="#88ffffff"
         android:textSize="14sp"/>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_above="@id/tv_blog"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:src="@drawable/guide_icon"/>
 
 </RelativeLayout>

@@ -23,6 +23,7 @@ import com.leon.lgank.adapter.ReadAdapter;
 import com.leon.lgank.common.Constant;
 import com.leon.lgank.model.TianModel;
 import com.leon.lgank.net.HttpManager;
+import com.leon.lgank.ui.MainActivity;
 import com.leon.lgank.ui.PicActivity;
 import com.leon.lgank.ui.ReadDetailActivity;
 import com.leon.lgank.widget.EmptyRecyclerView;
@@ -43,7 +44,7 @@ import static com.blankj.utilcode.util.NetworkUtils.isConnected;
  * 时间：2017/6/6
  */
 public class ReadFragment extends Fragment {
-    public Context mContext;
+    public MainActivity mContext;
     public View mView;
     private EmptyRecyclerView mEmptyRecyclerView;
     private ReadAdapter mReadAdapter;
@@ -60,7 +61,7 @@ public class ReadFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        this.mContext = getActivity();
+        this.mContext = (MainActivity) context;
     }
 
     @Nullable
@@ -83,6 +84,12 @@ public class ReadFragment extends Fragment {
             startLoading();
             getDataFromServer(Constant.GET_DATA_TYPE_NOMAL);
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
     }
 
     private void initListener() {

@@ -211,5 +211,3 @@ public class MeFragment extends Fragment {
         }
     }
 }
-
-

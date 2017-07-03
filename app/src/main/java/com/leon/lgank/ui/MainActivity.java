@@ -167,8 +167,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    /**
+     * 展示编辑功能
+     */
     public void showEdit() {
         mMenu.findItem(R.id.action_edit).setVisible(true);
+    }
+
+    /**
+     * 隐藏编辑功能
+     */
+    public void hideEdit() {
+        mMenu.findItem(R.id.action_edit).setVisible(false);
     }
 
     /**

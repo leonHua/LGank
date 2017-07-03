@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.leon.lgank.R;
 import com.leon.lgank.adapter.HomeAdapter;
+import com.leon.lgank.ui.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.List;
  * 时间：2017/6/6
  */
 public class HomeFragment extends Fragment {
-    private Context mContext;
+    private MainActivity mContext;
     private View mView;
     private ViewPager mViewPager;
     private List<Fragment> mListFragments;
@@ -32,7 +33,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        this.mContext = context;
+        this.mContext = (MainActivity) context;
     }
 
     @Nullable
