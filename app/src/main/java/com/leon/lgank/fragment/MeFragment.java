@@ -3,11 +3,11 @@ package com.leon.lgank.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +30,6 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.leon.lgank.R;
 import com.leon.lgank.common.Constant;
-import com.leon.lgank.image.ImageManager;
 import com.leon.lgank.ui.CollectionActivity;
 import com.leon.lgank.ui.DetailActivity;
 import com.leon.lgank.ui.MainActivity;
@@ -137,6 +136,10 @@ public class MeFragment extends Fragment {
         mName = SPUtils.getInstance().getString("nickname");
         mBlog = SPUtils.getInstance().getString("blogurl");
         mOther = SPUtils.getInstance().getString("otherurl");
+        String headimg = SPUtils.getInstance().getString("headimg");
+        if (!StringUtils.isEmpty(headimg)) {
+            mIvHeader.setImageBitmap(BitmapFactory.decodeFile(headimg));
+        }
         if (StringUtils.isEmpty(mName)) {
             mName = Constant.NICKNAME;
         }
@@ -154,9 +157,8 @@ public class MeFragment extends Fragment {
         List<BaseMedia> medias = Boxing.getResult(data);
         if (medias != null && medias.size() > 0) {
             String path = "file://" + medias.get(0).getPath();
-            Log.i("333333333333333333", path);
-            ImageManager.getInstance().loadImage(mIvHeader.getContext(), path, mIvHeader);
-            //mIvHeader.setImageBitmap(BitmapFactory.decodeFile( medias.get(0).getPath()));
+            mIvHeader.setImageBitmap(BitmapFactory.decodeFile(medias.get(0).getPath()));
+            SPUtils.getInstance().put("headimg", medias.get(0).getPath());
             //Glide.with(mIvHeader.getContext())
             //        .load(path)
             //        .error(R.drawable.loaderror)
