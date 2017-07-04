@@ -1,6 +1,7 @@
-
+![][1]
 
 ---
+
 # LGank是一款精致的干货客户端。
 ## 介绍
 整体设计遵循 Material Design 规范，实现了多种应用常见的效果。包括不局限于：
@@ -37,10 +38,9 @@
 快速实现设置界面：lsettingviewlibrary
 .........（更多请查看项目依赖文件）
 
-@感谢以上开源作者无私贡献，感谢 [干货集中营][1] 提供数据
+@感谢以上开源作者无私贡献，感谢 [干货集中营][2] 提供数据
 
 ## 项目效果图
-![][2]
 ![][3]
 ![][4]
 ![][5]
@@ -55,6 +55,7 @@
 ![][14]
 ![][15]
 ![][16]
+![][17]
 
 
 ## 打赏鼓励
@@ -63,37 +64,36 @@
 如果你觉得我的项目对你有帮助，请扫描下方的二维码随意打赏，您的支持是我最好的动力! 
 
 不想打赏，那就随手来个star吧！
-![Alipay支付宝][17]
-
-![WeChat微信][18]
+![Alipay支付宝][18]             ![WeChat微信][19]
 
 
 
 
 ## 关于我
-[我的简书][19]
-[我的博客][20]
-[我的GitHub][21]
+[我的简书][20]
+[我的博客][21]
+[我的GitHub][22]
 
 
-  [1]: http://gank.io/
-  [2]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%281%29.png?imageView2/0/w/600/h/1200/q/100
-  [3]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%282%29.png?imageView2/0/w/600/h/1200/q/100
-  [4]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%283%29.png?imageView2/0/w/600/h/1200/q/100
-  [5]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%284%29.png?imageView2/0/w/600/h/1200/q/100
-  [6]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%285%29.png?imageView2/0/w/600/h/1200/q/100
-  [7]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%286%29.png?imageView2/0/w/600/h/1200/q/100
-  [8]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%287%29.png?imageView2/0/w/600/h/1200/q/100
-  [9]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%288%29.png?imageView2/0/w/600/h/1200/q/100
-  [10]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%289%29.png?imageView2/0/w/600/h/1200/q/100
-  [11]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%2810%29.png?imageView2/0/w/600/h/1200/q/100
-  [12]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%2811%29.png?imageView2/0/w/600/h/1200/q/100
-  [13]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%2812%29.png?imageView2/0/w/600/h/1200/q/100
-  [14]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%2813%29.png?imageView2/0/w/600/h/1200/q/100
-  [15]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%2814%29.png?imageView2/0/w/600/h/1200/q/100
-  [16]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%2815%29.png?imageView2/0/w/600/h/1200/q/100
-  [17]: http://o9w936rbz.bkt.clouddn.com/me/zhifubao.png
-  [18]: http://o9w936rbz.bkt.clouddn.com/me/weixin.png
-  [19]: http://www.jianshu.com/u/984760f279b0
-  [20]: http://dujinghua.cn/
-  [21]: https://github.com/leonHua
+  [1]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/ic_launcher.png
+  [2]: http://gank.io/
+  [3]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%281%29.png?imageView2/0/w/500/h/1200/q/100
+  [4]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%282%29.png?imageView2/0/w/500/h/1200/q/100
+  [5]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%283%29.png?imageView2/0/w/500/h/1200/q/100
+  [6]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%284%29.png?imageView2/0/w/500/h/1200/q/100
+  [7]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%285%29.png?imageView2/0/w/500/h/1200/q/100
+  [8]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%286%29.png?imageView2/0/w/500/h/1200/q/100
+  [9]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%287%29.png?imageView2/0/w/500/h/1200/q/100
+  [10]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%288%29.png?imageView2/0/w/500/h/1200/q/100
+  [11]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%289%29.png?imageView2/0/w/500/h/1200/q/100
+  [12]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%2810%29.png?imageView2/0/w/500/h/1200/q/100
+  [13]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%2811%29.png?imageView2/0/w/500/h/1200/q/100
+  [14]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%2812%29.png?imageView2/0/w/500/h/1200/q/100
+  [15]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%2813%29.png?imageView2/0/w/500/h/1200/q/100
+  [16]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%2814%29.png?imageView2/0/w/500/h/1200/q/100
+  [17]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%2815%29.png?imageView2/0/w/500/h/1200/q/100
+  [18]: http://o9w936rbz.bkt.clouddn.com/me/zhifubao.png
+  [19]: http://o9w936rbz.bkt.clouddn.com/me/weixin.png
+  [20]: http://www.jianshu.com/u/984760f279b0
+  [21]: http://dujinghua.cn/
+  [22]: https://github.com/leonHua
