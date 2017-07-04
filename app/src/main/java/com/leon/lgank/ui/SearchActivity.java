@@ -115,7 +115,7 @@ public class SearchActivity extends AppCompatActivity implements SkinObserver {
             @Override
             public void onClick(int position, GankModel.ResultsEntity entity) {
                 Intent intent = new Intent(SearchActivity.this, DetailActivity.class);
-                intent.putExtra("url", entity.getUrl());
+                intent.putExtra("entity",entity);
                 startActivity(intent);
             }
 
