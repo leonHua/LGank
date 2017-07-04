@@ -35,7 +35,7 @@
 滑动关闭Activity：swipebackhelper
 多主题换肤：skin-support
 图片选择：boxing
-快速实现设置界面：lsettingviewlibrary
+快速实现设置界面：[lsettingviewlibrary][23]
 .........（更多请查看项目依赖文件）
 
 @感谢以上开源作者无私贡献，感谢 [干货集中营][2] 提供数据
@@ -110,3 +110,4 @@
   [20]: http://www.jianshu.com/u/984760f279b0
   [21]: http://dujinghua.cn/
   [22]: https://github.com/leonHua
+  [23]: https://github.com/leonHua/LSettingView
