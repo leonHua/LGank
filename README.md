@@ -41,7 +41,7 @@
 
 @感谢以上开源作者无私贡献，感谢 [干货集中营][3] 提供数据
 
-## 项目效果图
+## 项目效果图（动图加载失败可以查看screenshot文件夹下）
 
 ![](screenshot/lgankgif1.gif)
 ![](screenshot/lgankgif2.gif)
