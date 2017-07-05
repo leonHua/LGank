@@ -1,3 +1,4 @@
+
 ![][1]
 
 ---
@@ -35,15 +36,15 @@
 滑动关闭Activity：swipebackhelper
 多主题换肤：skin-support
 图片选择：boxing
-快速实现设置界面：[lsettingviewlibrary][23]
+快速实现设置界面：[lsettingviewlibrary][2]
 .........（更多请查看项目依赖文件）
 
-@感谢以上开源作者无私贡献，感谢 [干货集中营][2] 提供数据
+@感谢以上开源作者无私贡献，感谢 [干货集中营][3] 提供数据
 
 ## 项目效果图
-![][3] 
-![][4] 
-![][5] 
+
+![][4]
+![][5]
 
 ----------
 
@@ -55,17 +56,23 @@
 
 ![][9] 
 ![][10] 
-![][11]
+![][11] 
+
 ----------
+
 ![][12] 
 ![][13] 
-![][14] 
-
+![][14]
 ----------
-
 ![][15] 
 ![][16] 
 ![][17] 
+
+----------
+
+![][18] 
+![][19] 
+![][20] 
 
 
 ## 打赏鼓励
@@ -75,52 +82,41 @@
 
 不想打赏，那就随手来个star吧！
 
-![Alipay支付宝][18] ......................... ![WeChat微信][19]
+![Alipay支付宝][21] ......................... ![WeChat微信][22]
 
 
 
 
 ## 关于我
-[我的简书][20]
+[我的简书][23]
 
-[我的博客][21]
+[我的博客][24]
 
-[我的GitHub][22]
+[我的GitHub][25]
 
-## License
->Copyright (C) 2016 Bin Jing
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
->http://www.apache.org/licenses/LICENSE-2.0
-
->Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
 
   [1]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/ic_launcher.png
-  [2]: http://gank.io/
-  [3]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%281%29.png?imageView2/0/w/500/h/1200/q/100
-  [4]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%282%29.png?imageView2/0/w/500/h/1200/q/100
-  [5]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%283%29.png?imageView2/0/w/500/h/1200/q/100
-  [6]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%284%29.png?imageView2/0/w/500/h/1200/q/100
-  [7]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%285%29.png?imageView2/0/w/500/h/1200/q/100
-  [8]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%286%29.png?imageView2/0/w/500/h/1200/q/100
-  [9]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%287%29.png?imageView2/0/w/500/h/1200/q/100
-  [10]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%288%29.png?imageView2/0/w/500/h/1200/q/100
-  [11]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%289%29.png?imageView2/0/w/500/h/1200/q/100
-  [12]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%2810%29.png?imageView2/0/w/500/h/1200/q/100
-  [13]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%2811%29.png?imageView2/0/w/500/h/1200/q/100
-  [14]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%2812%29.png?imageView2/0/w/500/h/1200/q/100
-  [15]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%2813%29.png?imageView2/0/w/500/h/1200/q/100
-  [16]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%2814%29.png?imageView2/0/w/500/h/1200/q/100
-  [17]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%2815%29.png?imageView2/0/w/500/h/1200/q/100
-  [18]: http://o9w936rbz.bkt.clouddn.com/me/zhifubao.png
-  [19]: http://o9w936rbz.bkt.clouddn.com/me/weixin.png
-  [20]: http://www.jianshu.com/u/984760f279b0
-  [21]: http://dujinghua.cn/
-  [22]: https://github.com/leonHua
-  [23]: https://github.com/leonHua/LSettingView
+  [2]: https://github.com/leonHua/LSettingView
+  [3]: http://gank.io/
+  [4]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgankgif1.gif?imageView2/0/w/600/h/1200/q/100
+  [5]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgankgif2.gif?imageView2/0/w/600/h/1200/q/100
+  [6]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%281%29.png?imageView2/0/w/500/h/1200/q/100
+  [7]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%282%29.png?imageView2/0/w/500/h/1200/q/100
+  [8]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%283%29.png?imageView2/0/w/500/h/1200/q/100
+  [9]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%284%29.png?imageView2/0/w/500/h/1200/q/100
+  [10]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%285%29.png?imageView2/0/w/500/h/1200/q/100
+  [11]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%286%29.png?imageView2/0/w/500/h/1200/q/100
+  [12]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%287%29.png?imageView2/0/w/500/h/1200/q/100
+  [13]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%288%29.png?imageView2/0/w/500/h/1200/q/100
+  [14]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%289%29.png?imageView2/0/w/500/h/1200/q/100
+  [15]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%2810%29.png?imageView2/0/w/500/h/1200/q/100
+  [16]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%2811%29.png?imageView2/0/w/500/h/1200/q/100
+  [17]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%2812%29.png?imageView2/0/w/500/h/1200/q/100
+  [18]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%2813%29.png?imageView2/0/w/500/h/1200/q/100
+  [19]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%2814%29.png?imageView2/0/w/500/h/1200/q/100
+  [20]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%2815%29.png?imageView2/0/w/500/h/1200/q/100
+  [21]: http://o9w936rbz.bkt.clouddn.com/me/zhifubao.png
+  [22]: http://o9w936rbz.bkt.clouddn.com/me/weixin.png
+  [23]: http://www.jianshu.com/u/984760f279b0
+  [24]: http://dujinghua.cn/
+  [25]: https://github.com/leonHua
