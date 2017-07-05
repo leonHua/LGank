@@ -5,7 +5,7 @@
 
 # LGank是一款精致的干货客户端
 
-[下载使用][26]
+[下载使用：https://fir.im/lgank][26]
 
 ## 介绍
 整体设计遵循 Material Design 规范，实现了多种应用常见的效果。包括不局限于：
@@ -137,4 +137,4 @@ limitations under the License.
   [23]: http://www.jianshu.com/u/984760f279b0
   [24]: http://dujinghua.cn/
   [25]: https://github.com/leonHua
-  [26]: https://fir.im/lgank
+  [26]: https://fir.im/lgank
