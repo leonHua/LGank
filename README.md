@@ -43,8 +43,8 @@
 
 ## 项目效果图
 
-![][4]
-![][5]
+![](screenshot/lgankgif1.gif)
+![](screenshot/lgankgif2.gif)
 
 ----------
 
@@ -114,8 +114,6 @@ limitations under the License.
   [1]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/ic_launcher.png
   [2]: https://github.com/leonHua/LSettingView
   [3]: http://gank.io/
-  [4]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgankgif1.gif?imageView2/0/w/600/h/1200/q/100
-  [5]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgankgif2.gif?imageView2/0/w/600/h/1200/q/100
   [6]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%281%29.png?imageView2/0/w/500/h/1200/q/100
   [7]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%282%29.png?imageView2/0/w/500/h/1200/q/100
   [8]: http://o9w936rbz.bkt.clouddn.com/github/img/LGank/lgank%20%283%29.png?imageView2/0/w/500/h/1200/q/100
