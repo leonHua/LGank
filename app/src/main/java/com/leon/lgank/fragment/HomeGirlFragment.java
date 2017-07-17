@@ -102,8 +102,10 @@ public class HomeGirlFragment extends BaseHomeFragment implements View.OnClickLi
             case R.id.menu_item_linearlayout:
                 mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
                 mHomeRecyclerviewAdapter.setmIsStaggered(false);
-                SnapHelper snapHelper = new LinearSnapHelper();
-                snapHelper.attachToRecyclerView(mRecyclerView);
+                if (mRecyclerView.getOnFlingListener() == null) {
+                    SnapHelper snapHelper = new LinearSnapHelper();
+                    snapHelper.attachToRecyclerView(mRecyclerView);
+                }
                 mActionMenu.close(true);
                 break;
             case R.id.menu_item_gridlayout:
