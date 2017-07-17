@@ -2,6 +2,7 @@ package com.leon.lgank.ui;
 
 import android.content.Intent;
 import android.support.v7.widget.CardView;
+import android.view.Menu;
 import android.view.View;
 
 import com.leon.lgank.R;
@@ -43,7 +44,12 @@ public class ThemeActivity extends BaseActivity implements View.OnClickListener 
     protected String setToolbarTitle() {
         return "切换主题";
     }
-
+    @Override
+    protected void updateOptionsMenu(Menu menu) {
+        menu.findItem(R.id.action_download).setVisible(false);
+        menu.findItem(R.id.action_save).setVisible(false);
+        menu.findItem(R.id.action_share).setVisible(false);
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
