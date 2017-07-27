@@ -85,12 +85,10 @@ public class HomeRecyclerviewAdapter extends RecyclerView.Adapter<HomeRecyclervi
             if (mIsStaggered) {
                 //瀑布流模式
                 //随机高度，为了达到瀑布流效果
-                if (mHeights.size() <= position) {
-                    mHeights.add((int) (Math.random() * 300 + 500));
-                }
-                //设置每个条目的高度，高度是随机的
+
                 ViewGroup.LayoutParams lp = holder.cardView.getLayoutParams();
-                lp.height = mHeights.get(position);
+                lp.height = (int) (Math.random() * 300 + 500);
+
                 holder.cardView.setLayoutParams(lp);
             }
             ImageManager.getInstance().loadImage(mContext, resultsEntity.getUrl(), holder.ivGirl);

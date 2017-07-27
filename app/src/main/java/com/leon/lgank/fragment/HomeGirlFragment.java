@@ -3,9 +3,7 @@ package com.leon.lgank.fragment;
 import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SnapHelper;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
@@ -29,6 +27,10 @@ public class HomeGirlFragment extends BaseHomeFragment implements View.OnClickLi
     private FloatingActionButton mItemStaggeredlayout;
     private FloatingActionMenu mActionMenu;
     private ArrayList<String> mListPicUrls = null;
+    private final int TYPE_LINEARLAYOUT = 1;
+    private final int TYPE_GRIDLAYOUT = 2;
+    private final int TYPE_STAGGEREDLAYOUT = 3;
+    private int mCurrentType = 2;
 
     @Override
     public String getApiCategory() {
@@ -100,23 +102,31 @@ public class HomeGirlFragment extends BaseHomeFragment implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.menu_item_linearlayout:
+                if (mCurrentType == TYPE_LINEARLAYOUT) {
+                    return;
+                }
                 mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
                 mHomeRecyclerviewAdapter.setmIsStaggered(false);
-                if (mRecyclerView.getOnFlingListener() == null) {
-                    SnapHelper snapHelper = new LinearSnapHelper();
-                    snapHelper.attachToRecyclerView(mRecyclerView);
-                }
                 mActionMenu.close(true);
+                mCurrentType = TYPE_LINEARLAYOUT;
                 break;
             case R.id.menu_item_gridlayout:
+                if (mCurrentType == TYPE_GRIDLAYOUT) {
+                    return;
+                }
                 mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 2, GridLayoutManager.VERTICAL, false));
                 mHomeRecyclerviewAdapter.setmIsStaggered(false);
                 mActionMenu.close(true);
+                mCurrentType = TYPE_GRIDLAYOUT;
                 break;
             case R.id.menu_item_staggeredlayout:
+                if (mCurrentType == TYPE_STAGGEREDLAYOUT) {
+                    return;
+                }
                 mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
                 mHomeRecyclerviewAdapter.setmIsStaggered(true);
                 mActionMenu.close(true);
+                mCurrentType = TYPE_STAGGEREDLAYOUT;
                 break;
         }
     }
