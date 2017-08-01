@@ -57,7 +57,7 @@ public abstract class BaseHomeFragment extends Fragment {
     private AVLoadingIndicatorView mAviLoadMore;
     private int mPage = 1;
     private LinearLayout mLayoutLoadMore;
-
+    private boolean mIsLoadMore = true;//是否可以加载更多
 
     @Override
     public void onAttach(Context context) {
@@ -191,7 +191,10 @@ public abstract class BaseHomeFragment extends Fragment {
                             //加载更多模式
                             mList.addAll(value.getResults());
                         }
-
+                        //如果获取的数据不足一页，代表当前已经没有更过数据，关闭加载更多
+                        if (value.getResults().size() < Constant.PAGE_SIZE) {
+                            mIsLoadMore = false;
+                        }
                         mHomeRecyclerviewAdapter.setmListData(mList);
                         mHomeRecyclerviewAdapter.notifyDataSetChanged();
                     }
@@ -322,8 +325,12 @@ public abstract class BaseHomeFragment extends Fragment {
                 // 判断界面显示的最后item的position是否等于itemCount总数-1也就是最后一个item的position
                 //如果相等则说明已经滑动到最后了
                 if (!recyclerView.canScrollVertically(1)) {
-                    //此时需要请求等过数据，显示加载更多界面
                     recyclerView.smoothScrollToPosition(lastPosition);
+                    if (!mIsLoadMore) {
+                        ToastUtils.showShortSafe("木有更多数据了...");
+                        return;
+                    }
+                    //此时需要请求等过数据，显示加载更多界面
                     mPage++;
                     startLoadingMore();
                     getDataFromServer(Constant.GET_DATA_TYPE_LOADMORE);

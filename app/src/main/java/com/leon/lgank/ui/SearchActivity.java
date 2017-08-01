@@ -80,6 +80,8 @@ public class SearchActivity extends AppCompatActivity implements SkinObserver {
     private EditText mEtSearch;
     private TextView mTvSearch;
     private SkinCompatDelegate mSkinDelegate;//换肤实现
+    private boolean mIsLoadMore = true;//是否可以加载更多
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,7 +117,7 @@ public class SearchActivity extends AppCompatActivity implements SkinObserver {
             @Override
             public void onClick(int position, GankModel.ResultsEntity entity) {
                 Intent intent = new Intent(SearchActivity.this, DetailActivity.class);
-                intent.putExtra("entity",entity);
+                intent.putExtra("entity", entity);
                 startActivity(intent);
             }
 
@@ -257,6 +259,10 @@ public class SearchActivity extends AppCompatActivity implements SkinObserver {
                             //加载更多模式
                             mList.addAll(value.getResults());
                         }
+                        //如果获取的数据不足一页，代表当前已经没有更过数据，关闭加载更多
+                        if (value.getResults().size() < Constant.PAGE_SIZE) {
+                            mIsLoadMore = false;
+                        }
                         if (mRecyclerViewHistory.getAdapter() instanceof HistorySearchAdapter) {
                             mRecyclerViewHistory.setAdapter(mHomeRecyclerviewAdapter);
                         }
@@ -357,6 +363,7 @@ public class SearchActivity extends AppCompatActivity implements SkinObserver {
         intent.putStringArrayListExtra("piclist", mListPicUrls);
         startActivity(intent);
     }
+
     @NonNull
     public SkinCompatDelegate getSkinDelegate() {
         if (mSkinDelegate == null) {
@@ -426,7 +433,7 @@ public class SearchActivity extends AppCompatActivity implements SkinObserver {
             }
             //如果当前是显示搜索历史则不响应上拉事件
             if (mRecyclerViewHistory.getAdapter() instanceof HistorySearchAdapter) {
-                Logger.i("no action-------------");
+               // Logger.i("no action-------------");
                 return;
             }
             //当前RecyclerView显示出来的最后一个的item的position,默认为-1
@@ -449,7 +456,13 @@ public class SearchActivity extends AppCompatActivity implements SkinObserver {
                 }
                 // 判断界面显示的最后item的position是否等于itemCount总数-1也就是最后一个item的position
                 //如果相等则说明已经滑动到最后了
-                if (lastPosition == recyclerView.getLayoutManager().getItemCount() - 1) {
+                if (!recyclerView.canScrollVertically(1)) {
+                    //此时需要请求等过数据，显示加载更多界面
+                    recyclerView.smoothScrollToPosition(lastPosition);
+                    if (!mIsLoadMore) {
+                        ToastUtils.showShortSafe("木有更多数据了...");
+                        return;
+                    }
                     //此时需要请求等过数据，显示加载更多界面
                     mPage++;
                     startLoadingMore();
