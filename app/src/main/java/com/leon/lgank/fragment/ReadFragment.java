@@ -151,7 +151,7 @@ public class ReadFragment extends Fragment {
     public void getDataFromServer(final int type) {
         HttpManager.getInstance()
                 .getApiService(Constant.BASE_URL_READ)
-                .getReadData(Constant.APIKEY, Constant.PAGE_SIZE, 2)
+                .getReadData(Constant.APIKEY, Constant.PAGE_SIZE, mPage)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<TianModel>() {

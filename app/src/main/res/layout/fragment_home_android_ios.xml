@@ -125,8 +125,8 @@
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/menu_item_linearlayout"
             style="@style/floatactionbutton_style"
-            android:src="@mipmap/floataction_list"
             android:clickable="true"
+            android:src="@mipmap/floataction_list"
             fab:fab_colorNormal="?attr/colorPrimary"
             fab:fab_colorPressed="?attr/colorPrimary"
             fab:fab_colorRipple="@color/gray"
@@ -154,6 +154,4 @@
             fab:fab_size="normal"/>
 
     </com.github.clans.fab.FloatingActionMenu>
-
-
 </RelativeLayout>
